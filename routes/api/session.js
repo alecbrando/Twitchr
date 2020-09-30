@@ -9,6 +9,11 @@ const { jwtConfig: { expiresIn }} = require('../../config');
 
 const router = express.Router();
 
+const validateLogin = [
+  check("username").exists(),
+  check("password").exists(),
+]
+
 // Get current user route
 router.get(
   "/",
@@ -23,6 +28,7 @@ router.get(
 // Login route
 router.put(
   "/",
+  validateLogin,
   handleValidationErrors,
   asyncHandler(async function (req, res, next) {
     const user = await User.login(req.body);
