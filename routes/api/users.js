@@ -11,9 +11,15 @@ const {
 
 const router = express.Router();
 
+const validateSignUp = [
+  check("username").exists(),
+  check("password").exists(),
+]
+
 // Signup route
 router.post(
   "/",
+  validateSignUp,
   handleValidationErrors,
   asyncHandler(async function (req, res) {
     console.log(req.body);
