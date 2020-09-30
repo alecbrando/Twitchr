@@ -33,7 +33,7 @@ router.put(
   asyncHandler(async function (req, res, next) {
     const user = await User.login(req.body);
     if (user) {
-      const token = await generateToken(user);
+      const token = generateToken(user);
       res.cookie("token", token, {
         maxAge: expiresIn * 1000, // maxAge in milliseconds
         httpOnly: true,
