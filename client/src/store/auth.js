@@ -24,7 +24,6 @@ export const logout = () => async dispatch => {
       method: "DELETE",
       headers: {
         'Content-Type': 'application/json',
-        "XSRF-TOKEN": Cookies.get("XSRF-TOKEN")
       }
     });
     if (res.ok) {

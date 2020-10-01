@@ -39,9 +39,9 @@ import { login } from '../../store/auth';
                                         <input type="password" name="password" value={password} placeholder="Password" onChange={(e) => setPassword(e.target.value)}/>
                                     </div>
                                 </div>
-                                <div type="submit" className="ui fluid large blue submit button">
+                                <button type="submit" className="ui fluid large blue submit button">
                                     Log In
-                                </div>
+                                </button>
                             </div>
                         </form>
                         <div className="ui message">

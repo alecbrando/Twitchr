@@ -46,9 +46,9 @@ export default function SignUp() {
                                     <input type="password" name="password" value={password} placeholder="Password" onChange={(e) => setPassword(e.target.value)}/>
                                 </div>
                             </div>
-                            <div type="submit" className="ui fluid large blue submit button">
+                            <button type="submit" className="ui fluid large blue submit button">
                                 Sign Up
-                            </div>
+                            </button>
                         </div>
                     </form>
                 </div>
