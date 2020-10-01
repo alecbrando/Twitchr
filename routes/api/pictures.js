@@ -2,9 +2,9 @@ const express = require('express');
 const multer  = require('multer');
 const AWS = require('aws-sdk');
 const { aws: { iamAccessKey, iamSecret } } = require('../../config')
-const { Pictures } = require('../../db/models')
+const { Picture } = require('../../db/models')
 const fs = require('fs');
-
+const asyncHandler = require('express-async-handler');
 const router = express.Router();
 
 // configuring the DiscStorage engine.
@@ -22,23 +22,24 @@ const upload = multer({ storage: storage });
 AWS.config.update({
     accessKeyId: iamAccessKey,
     secretAccessKey: iamSecret,
-    region: 'us-west-1',
+    region: 'us-west-2',
 });
 
 //Creating a new instance of S3:
 const s3 = new AWS.S3();
 
 //POST method route for uploading file
-router.post('/post_file', upload.single('demo_file'), async function (req, res) {
+router.post('/', upload.single('demo_file'), asyncHandler(async function (req, res) {
   //Multer middleware adds file(in case of single file ) or files(multiple files) object to the request object.
   //req.file is the demo_file
+  console.log(req.file)
   uploadFile(req.file.path, req.file.filename ,res);
   const { title, body, tags, userId } = req.body
-  const image = `https://img-twtchr-bucket.s3-us-west-1.amazonaws.com/${req.file.filename}`
-  await Pictures.create({urlRef: image, title, body, tags, userId })
-})
+  const image = `https://twtchr-img.s3-us-west-2.amazonaws.com/${req.file.filename}`
+  await Picture.create({urlRef: image, title, body, tags, userId })
+})) 
 
-// https://img-twtchr-bucket.s3-us-west-1.amazonaws.com/
+
 
 
 //GET method route for downloading/retrieving file
@@ -52,7 +53,7 @@ function uploadFile(source,targetName,res){
     fs.readFile(source, function (err, filedata) {
       if (!err) {
         const putParams = {
-            Bucket      : 'img-twtchr-bucket',
+            Bucket      : 'twtchr-img',
             Key         : targetName,
             Body        : filedata
         };
@@ -78,7 +79,7 @@ function uploadFile(source,targetName,res){
 function retrieveFile(filename,res){
 
   const getParams = {
-    Bucket: 'img-twtchr-bucket',
+    Bucket: 'twtchr-img',
     Key: filename
   };
 

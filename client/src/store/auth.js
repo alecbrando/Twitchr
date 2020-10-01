@@ -20,10 +20,12 @@ export const createUser = user => ({
 })
 
 export const logout = () => async dispatch => {
+    const csrfToken = Cookies.get("XSRF-TOKEN");
     const res = await fetch('/api/session', {
       method: "DELETE",
       headers: {
         'Content-Type': 'application/json',
+        'XSRF-TOKEN': csrfToken
       }
     });
     if (res.ok) {
@@ -65,8 +67,6 @@ export const login = (username, password) => {
         return res;
     }
 }
-
-window.login = login;
 
 export default function authReducer(state = {}, action) {
     switch (action.type) {
