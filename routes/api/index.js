@@ -4,7 +4,7 @@ const router = require('express').Router();
 // corresponding to the name of the file to this array.
 // Then this file will automatically add that file from this folder to the api
 // routes.
-const routes = ['users', 'session', 'csrf'];
+const routes = ['users', 'session', 'csrf', 'pictures'];
 
 for (let route of routes) {
   router.use(`/${route}`, require(`./${route}`));
