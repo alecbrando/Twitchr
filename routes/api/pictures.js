@@ -36,7 +36,10 @@ router.post('/', upload.single('demo_file'), asyncHandler(async function (req, r
   uploadFile(req.file.path, req.file.filename ,res);
   const { title, body, tags, userId } = req.body
   const image = `https://twtchr-img.s3-us-west-2.amazonaws.com/${req.file.filename}`
-  await Picture.create({urlRef: image, title, body, tags, userId })
+  const picture = await Picture.create({urlRef: image, title, body, tags, userId })
+
+  const pictures = await Picture.findAll({where: {userId: userId}})
+  res.json({pictures})
 })) 
 
 

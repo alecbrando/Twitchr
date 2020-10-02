@@ -1,29 +1,15 @@
 import Cookies from 'js-cookie';
 const SET_IMAGE = "auth/SET_IMAGE";
 
-export const setImage = (user) => {
+export const setImage = (pictures) => {
     return {
         type: SET_IMAGE,
-        user
+        pictures
     }
 };
 
-export const postToAws = async (formData) => {
+export const postToAws = (formData) => async(dispatch) => {
     const csrfToken = Cookies.get("XSRF-TOKEN");
-    // const object = {};
-    // formData.forEach((value, key) => {
-    //     // Reflect.has in favor of: object.hasOwnProperty(key)
-    //     if (!Reflect.has(object, key)) {
-    //         object[key] = value;
-    //         return;
-    //     }
-    //     if (!Array.isArray(object[key])) {
-    //         object[key] = [object[key]];
-    //     }
-    //     object[key].push(value);
-    // });
-
-    // console.log(object)
     console.log(formData)
     const res = await fetch('/api/pictures', {
         method: "post",
@@ -33,4 +19,17 @@ export const postToAws = async (formData) => {
         },
         body: formData
     })
+    if (res.ok) {
+        const { pictures } = await res.json();
+        dispatch(setImage(pictures))
+    }
+}
+
+export default function picReducer(state = [], action) {
+    switch (action.type) {
+        case SET_IMAGE:
+            return action.pictures;
+        default:
+            return state;
+    }
 }

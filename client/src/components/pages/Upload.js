@@ -7,6 +7,7 @@ function Upload() {
     const [title, setTitle] = useState('');
     const [body, setBody] = useState('');
     const [filename, setFilename] = useState('')
+    const [tags, setTag] = useState('')
 
     const dispatch = useDispatch();
 
@@ -33,6 +34,10 @@ function Upload() {
                 <div className="field">
                     <label>Description</label>
                     <textarea row="2" type="text" placeholder="Description" value={body} onChange={(e) => setBody(e.target.value)}></textarea>
+                </div>
+                <div className="field">
+                    <label>Tag</label>
+                    <input type="text" placeholder="Add a Tag" value={tags} onChange={(e) => setTag(e.target.value)}></input>
                 </div>
                 <div className="field">
                     <label htmlFor="img">Select Image:</label>
