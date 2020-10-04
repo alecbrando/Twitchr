@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { Redirect, Link } from 'react-router-dom';
 import { login } from '../../store/auth';
+import './Forms.css';
 
  function LoginPage() {
     const [username, setUsername] = useState('');

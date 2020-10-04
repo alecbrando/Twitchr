@@ -1,0 +1,9 @@
+body {
+    background: lightblue;
+}
+
+.start {
+    display: flex;
+    justify-content: center;
+    margin-top: 350px;
+}

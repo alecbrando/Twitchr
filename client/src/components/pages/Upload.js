@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
-import { Redirect, Link } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 import { postToAws } from '../../store/actions'
 
 function Upload() {
@@ -20,9 +20,12 @@ function Upload() {
         formData.append('body', body)
         formData.append('title', title)
         formData.append('userId', userId)
-        dispatch(postToAws(formData));
+        formData.append('tags', tags)
+        dispatch(postToAws(formData))
+        
     }
 
+    if(userId === undefined) return <Redirect to="/"/>
 
     return (
         <div className="adjust">

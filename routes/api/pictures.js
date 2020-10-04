@@ -2,7 +2,7 @@ const express = require('express');
 const multer  = require('multer');
 const AWS = require('aws-sdk');
 const { aws: { iamAccessKey, iamSecret } } = require('../../config')
-const { Picture } = require('../../db/models')
+const { Picture, User } = require('../../db/models')
 const fs = require('fs');
 const asyncHandler = require('express-async-handler');
 const router = express.Router();
@@ -34,13 +34,22 @@ router.post('/', upload.single('demo_file'), asyncHandler(async function (req, r
   //req.file is the demo_file
   console.log(req.file)
   uploadFile(req.file.path, req.file.filename ,res);
+  console.log(req.body)
   const { title, body, tags, userId } = req.body
-  const image = `https://twtchr-img.s3-us-west-2.amazonaws.com/${req.file.filename}`
+  const image = `https://twtchr-img.s3-us-west-2.amazonaws.com/images/${req.file.filename}`
   const picture = await Picture.create({urlRef: image, title, body, tags, userId })
 
-  const pictures = await Picture.findAll({where: {userId: userId}})
-  res.json({pictures})
-})) 
+  const pictures = await Picture.findAll({include: {userId: userId}})
+  res.json( {pictures} )
+}))
+
+
+router.get('/', asyncHandler(async function (req, res) {
+  const pictures = await Picture.findAll({ include: [{
+    model: User
+  }]})
+  res.json( { pictures } )
+}))
 
 
 
@@ -55,20 +64,22 @@ function uploadFile(source,targetName,res){
     console.log('preparing to upload...');
     fs.readFile(source, function (err, filedata) {
       if (!err) {
+        // console.log(targetName, source, filedata)
         const putParams = {
-            Bucket      : 'twtchr-img',
+            Bucket      : 'twtchr-img/images',
             Key         : targetName,
-            Body        : filedata
+            Body        : filedata,
+            ACL         : 'public-read'
         };
         s3.putObject(putParams, function(err, data){
           if (err) {
             console.log('Could nor upload the file. Error :',err);
-            return res.send({success:false});
+            return;
           } 
           else{
-            fs.unlink(source);// Deleting the file from uploads folder(Optional).Do Whatever you prefer.
+            // fs.unlink(source);// Deleting the file from uploads folder(Optional).Do Whatever you prefer.
             console.log('Successfully uploaded the file');
-            return res.send({success:true});
+            return;
           }
         });
       }
@@ -82,7 +93,7 @@ function uploadFile(source,targetName,res){
 function retrieveFile(filename,res){
 
   const getParams = {
-    Bucket: 'twtchr-img',
+    Bucket: 'twtchr-img/images',
     Key: filename
   };
 

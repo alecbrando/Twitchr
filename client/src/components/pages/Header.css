@@ -1,9 +1,3 @@
-.logo {
-    color: white;
-}
-
-.adjust{
-    display: flex;
-    justify-content: center;
-    margin-top: 50px;
+.hidden {
+    visibility: hidden;
 }
