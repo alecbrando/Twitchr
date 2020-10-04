@@ -15,4 +15,4 @@
 6. Bonus: Follows
 
 ## DB Tables
-https://imgur.com/iuHplsf
+https://imgur.com/t9SL4M0
