@@ -1,8 +1,7 @@
 const express = require('express');
 const asyncHandler = require('express-async-handler');
 const { check } = require("express-validator");
-
-const { User } = require("../../db/models");
+const { User, Picture } = require("../../db/models");
 const { handleValidationErrors } = require("../util/validation");
 const { generateToken } = require("../util/auth");
 const {
@@ -15,6 +14,13 @@ const validateSignUp = [
   check("username").exists(),
   check("password").exists(),
 ]
+
+router.get('/:id', asyncHandler(async function (req, res) {
+  const userPhotos = await Picture.findAll( { where: { userId: req.params.id }, include: [{
+    model: User
+  }]});
+  res.json( { userPhotos } )
+}))
 
 // Signup route
 router.post(

@@ -7,6 +7,7 @@ import Upload from './Upload';
 import Home from './Home';
 import Photos from './Photos';
 import Profile from './Profile';
+import SinglePhoto from './SinglePhoto';
 
 export default function Pages() {
     return (
@@ -18,6 +19,7 @@ export default function Pages() {
             <Route path="/" exact component={Home}></Route>
             <Route path="/photos" component={Photos}></Route>
             <Route path="/profile" component={Profile}></Route>
+            <Route path="/photos/:id" component={SinglePhoto}></Route>
         </>
     )
 }
