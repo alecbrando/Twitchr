@@ -17,7 +17,15 @@ export default function Home() {
     return (
         <div>
             <div className="start">
-                <button onClick={handleClick} className="black ui button" >Start Demo</button>
+                <div>
+                    <h2>“Every artist was first an amateur” Ralph Waldo Emerson</h2>
+                </div>
+                
+            </div>
+            <div className="button">
+                <div>
+                    <button onClick={handleClick} className="black ui button" >Start Demo</button>
+                </div>
             </div>
         </div>
     )

@@ -17,7 +17,7 @@ export default function Pages() {
             <Route path="/signup" component={SignUp}></Route>
             <Route path="/upload" component={Upload}></Route>
             <Route path="/" exact component={Home}></Route>
-            <Route path="/photos" component={Photos}></Route>
+            <Route path="/photos" exact component={Photos}></Route>
             <Route path="/profile" component={Profile}></Route>
             <Route path="/photos/:id" component={SinglePhoto}></Route>
         </>

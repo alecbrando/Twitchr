@@ -21,7 +21,7 @@ export default function ImageCard(props) {
                     <span className="date">Posted on {`${month}-${day}-${year}`}</span>
                     </div>
                         <div className="description">
-                        {props.image.body}
+                        <Link to={`/photos/${props.image.id}`}>{props.image.body}</Link>
                         </div>
                 </div>
             </div>

@@ -39,7 +39,9 @@ router.post('/', upload.single('demo_file'), asyncHandler(async function (req, r
   const image = `https://twtchr-img.s3-us-west-2.amazonaws.com/images/${req.file.filename}`
   const picture = await Picture.create({urlRef: image, title, body, tags, userId })
 
-  const pictures = await Picture.findAll({include: {userId: userId}})
+  const pictures = await Picture.findAll({include: [{model: User}], where :{
+    userId: userId
+  }})
   res.json( {pictures} )
 }))
 
@@ -51,7 +53,13 @@ router.get('/', asyncHandler(async function (req, res) {
   res.json( { pictures } )
 }))
 
-
+router.get('/:id', asyncHandler(async function (req, res) {
+  const picture = await Picture.findAll({ include: [{
+    model: User
+  }], where: { id: req.params.id}
+})
+  res.json( { picture } )
+}))
 
 
 //GET method route for downloading/retrieving file

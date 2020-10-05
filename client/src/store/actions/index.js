@@ -2,6 +2,7 @@ import Cookies from 'js-cookie';
 export const SET_IMAGE = "auth/SET_IMAGE";
 export const LOAD_IMAGE = "auth/SET_IMAGE";
 export const SET_CURRENT = "auth/SET_CURRENT";
+export const GET_IMAGE = "auth/GET_IMAGE";
 
 export const setImage = (pictures) => {
     return {
@@ -15,6 +16,13 @@ export const loadImages = (pictures) => {
         type: LOAD_IMAGE,
         pictures
     }
+};
+
+export const getPic = (picture) => {
+  return {
+      type: GET_IMAGE,
+      picture
+  }
 };
 
 export const setCurrent = (userPhotos) => {
@@ -33,13 +41,22 @@ export const postToAws = (formData) => async(dispatch) => {
         },
         body: formData
     })
-    if (res.ok) {
+
+    try {
+      if (res.ok) {
         const { pictures } = await res.json();
         dispatch(setImage(pictures))
         window.location.href="/photos";
-    } else {
-        alert('Failed to Upload!');
+      }
+      else {
+        throw res;
+      }
+    } catch (error) {
+      console.log(error)
     }
+
+      
+      
 }
 
 
@@ -60,3 +77,14 @@ export const getPhotos = () => async (dispatch) => {
       return userPhotos
     }
   };
+
+
+  export const getPhoto = (id) => async (dispatch) => {
+    const res = await fetch(`/api/pictures/${id}`);
+    if (res.ok) {
+      const { picture } = await res.json();
+      dispatch(getPic(picture))
+      return picture
+    }
+  };
+

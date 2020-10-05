@@ -2,3 +2,8 @@
     text-align: center;
     background: lightslategray;
 }
+
+.cards {
+    display: flex;
+    
+}
