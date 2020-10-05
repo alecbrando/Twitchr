@@ -14,14 +14,9 @@ export default function SinglePhoto() {
 
     console.log(data)
 
-    // const renderOut = () => {
-    //     return data.map((image) => {
-    //             if(data)
-    //             return (
-    //                 <img key={image.id} src={image}/>
-    //             )
-    //         })
-    // }
+    const onSubmit = (e) => {
+        
+    }
 
     let value = ''
     if(data[0]){
@@ -31,7 +26,7 @@ export default function SinglePhoto() {
     return (
         <>
             <div className="jumbotron">
-                <img alt="img" src={`${value}`}/>
+                <img alt="img" height="500" src={`${value}`}/>
             </div>
             <div>
                 <Comment></Comment>

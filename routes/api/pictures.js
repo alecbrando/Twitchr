@@ -2,7 +2,7 @@ const express = require('express');
 const multer  = require('multer');
 const AWS = require('aws-sdk');
 const { aws: { iamAccessKey, iamSecret } } = require('../../config')
-const { Picture, User } = require('../../db/models')
+const { Picture, User, Comment } = require('../../db/models')
 const fs = require('fs');
 const asyncHandler = require('express-async-handler');
 const router = express.Router();
@@ -61,6 +61,19 @@ router.get('/:id', asyncHandler(async function (req, res) {
   res.json( { picture } )
 }))
 
+router.post('photo/:id', asyncHandler(async function (req, res) {
+  const comment = await Comment.create( {userId : req.userId, pictureId: req.pictureId, comment: req.comment })
+  res.json( { comment } )
+}))
+
+
+router.get('photo/:id', asyncHandler(async function (req, res) {
+  const comment = await Comment.findAll({ include: [{
+    model: User
+  }], where: { id: req.params.id}
+})
+  res.json( { comment } )
+}))
 
 //GET method route for downloading/retrieving file
 router.get('/get_file/:file_name',(req,res)=>{
