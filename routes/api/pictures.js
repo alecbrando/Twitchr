@@ -61,18 +61,20 @@ router.get('/:id', asyncHandler(async function (req, res) {
   res.json( { picture } )
 }))
 
-router.post('photo/:id', asyncHandler(async function (req, res) {
-  const comment = await Comment.create( {userId : req.userId, pictureId: req.pictureId, comment: req.comment })
-  res.json( { comment } )
+router.post('/photo/:id', asyncHandler(async function (req, res) {
+  console.log('inside')
+  const {userId, pictureId, comment} = req.body;
+  const comments = await Comment.create( {userId, pictureId, comment})
+  res.json( { comments } )
 }))
 
 
-router.get('photo/:id', asyncHandler(async function (req, res) {
-  const comment = await Comment.findAll({ include: [{
+router.get('/photo/:id', asyncHandler(async function (req, res) {
+  const comments = await Comment.findAll({ include: [{
     model: User
-  }], where: { id: req.params.id}
+  }]
 })
-  res.json( { comment } )
+  res.json( { comments } )
 }))
 
 //GET method route for downloading/retrieving file

@@ -1,31 +1,25 @@
 import React, {useState, useEffect} from 'react'
 import {useDispatch, useSelector} from 'react-redux'
 import { grabComment } from '../../store/actions'
+import CommentDetail from './CommentDetail';
 
 export default function Comment() {
     const [comment, setComment] = useState('')
-    const data = useSelector(state => state)
+    const data = useSelector(state => state.picReducer)
     const dispatch = useDispatch();
 
-
     useEffect(() => {
-        dispatch(grabComment())
-    }, [dispatch])
-    
+        let value = window.location.pathname.slice(8);
+        dispatch(grabComment(value))
+    }, [])
+
+    console.log(data)
+    const renderOut = () => {
+    }
+
     return (
-        <div className="comment">
-            <a className="avatar">
-                <i className="avatar circle icon"/>
-            </a>
-            <div className="content">
-                <a className="author">Joe Henderson</a>
-                <div className="metadata">
-                    <span className="date">5 days ago</span>
-                </div>
-                <div className="text">
-                    Dude, this is awesome. Thanks so much
-                </div>
-            </div>
-        </div>
+        <>
+            <CommentDetail/>
+        </>
     )
 }

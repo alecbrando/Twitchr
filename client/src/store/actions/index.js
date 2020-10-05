@@ -106,21 +106,23 @@ export const getPhotos = () => async (dispatch) => {
   };
 
 
-  export const postComment = (comment, id) => async(dispatch) => {
+  export const postComment = (obj) => async(dispatch) => {
+    const {pictureId} = obj;
+    console.log(obj)
     const csrfToken = Cookies.get("XSRF-TOKEN");
-    const res = await fetch(`/api/pictures/photo/${id}`, {
+    const res = await fetch(`/api/pictures/photo/${pictureId}`, {
         method: "post",
         headers: {
             'Content-Type': 'application/json',
             'XSRF-TOKEN': csrfToken
         },
-        body: JSON.stringify(comment)
+        body: JSON.stringify(obj)
     })
 
     try {
       if (res.ok) {
-        const { comment } = await res.json();
-        dispatch(setComment(comment))
+        const { comments } = await res.json();
+        dispatch(setComment(comments))
       }
       else {
         throw res;
