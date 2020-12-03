@@ -1,6 +1,6 @@
 import React, {useEffect} from 'react'
 import ImageCard from './ImageCard';
-import { getPhotos } from '../../store/actions'
+import { getPhotos } from '../../store/actions/actionPicture'
 import { useDispatch, useSelector } from 'react-redux';
 import './Cards.css'
 
@@ -21,7 +21,7 @@ export default function Photos() {
     }
 
     return (
-        <div className="image-list cards">
+        <div className="card-container">
             {renderOut()}
         </div>
     )

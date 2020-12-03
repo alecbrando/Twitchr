@@ -9,7 +9,7 @@ export default function ImageCard(props) {
     const month = date.slice(5,7);
     const day = date.slice(8,10);
     return (
-        <div className="one-card container">
+        <span className="one-card container">
             <div className="ui card">
                 
                 <div className="image">
@@ -25,7 +25,7 @@ export default function ImageCard(props) {
                         </div>
                 </div>
             </div>
-        </div>
+        </span>
         
     )
 }

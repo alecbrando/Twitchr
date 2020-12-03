@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { Redirect } from 'react-router-dom';
-import { postToAws } from '../../store/actions'
+import { postToAws } from '../../store/actions/actionPicture'
 
 function Upload() {
     const [title, setTitle] = useState('');

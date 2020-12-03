@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
-import { getUser } from '../../store/actions'
+import { getUser } from '../../store/actions/actionPicture'
 import { Link } from 'react-router-dom';
 import './Profile.css';
 

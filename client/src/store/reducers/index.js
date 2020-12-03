@@ -1,4 +1,4 @@
-import { SET_IMAGE, LOAD_IMAGE, SET_CURRENT, GET_IMAGE, SET_COMMENT, GET_COMMENT }  from '../actions';
+import { SET_IMAGE, LOAD_IMAGE, SET_CURRENT, GET_IMAGE }  from '../actions/actionPicture';
 
 
 
@@ -12,10 +12,6 @@ export default function picReducer(state = [], action) {
             return action.userPhotos;
         case GET_IMAGE:
             return action.picture;
-        case SET_COMMENT:
-            return action.comment;
-        case GET_COMMENT:
-            return action.comments;
         default:
             return state;
     }

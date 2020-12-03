@@ -14,7 +14,7 @@ export default function Header() {
     </div>):(
     <div className="hidden">
         <Link to="/login" className='ui inverted button'>Log In</Link>
-        <Link to="/signup" className={`${window.location.pathname === '/signup' ? 'active' : ''} ui inverted button`}>Sign Up</Link>
+        <Link to="/signup" className='ui inverted button'>Sign Up</Link>
     </div>)
 
     return (
