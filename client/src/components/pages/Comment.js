@@ -19,7 +19,7 @@ export default function Comment() {
        return data.map(comment => {
             console.log(comment)
             if (comment.pictureId === parseInt(window.location.pathname.slice(8))){
-                return <CommentDetail username={comment.User.username} comment={comment.comment}/>
+                return <CommentDetail username={comment.User.username} comment={comment.comment} id={comment.id} userId={comment.userId}/>
             } else {
                 return (
                     <>

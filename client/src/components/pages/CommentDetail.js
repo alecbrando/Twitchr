@@ -1,8 +1,20 @@
 import React from 'react'
 import styles from '../../scss/comment.module.scss'
+import { useSelector } from 'react-redux';
 
 export default function CommentDetail(props) {
     console.log(props)
+    const userId = useSelector(state => state.auth.id)
+
+
+
+
+    const renderOut = () => {
+        if(userId === props.userId) {
+            return <button className="ui button">Delete</button>
+        }
+    }
+
     return (
         <div className={styles.container}>
             <div className="comment">
@@ -17,6 +29,7 @@ export default function CommentDetail(props) {
                     <div className="text">
                         {props.comment}
                     </div>
+                    {renderOut()}
                 </div>
             </div>
         </div>

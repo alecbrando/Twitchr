@@ -17,12 +17,14 @@ export default function SinglePhoto() {
 
 
     const onSubmit = (e) => {
-        const obj = {
-            comment: text,
-            userId: data[0].userId,
-            pictureId: window.location.pathname.slice(8)
+        if(text.length > 2){
+            const obj = {
+                comment: text,
+                userId: data[0].userId,
+                pictureId: window.location.pathname.slice(8)
+            }
+            dispatch(postComment(obj))
         }
-        dispatch(postComment(obj))
     }
 
 
@@ -46,8 +48,8 @@ export default function SinglePhoto() {
                     <div className="field">
                         <textarea onChange={(e) => setText(e.target.value)}></textarea>
                     </div>
-                    <div className="ui blue labeled submit icon button">
-                        <i className="icon edit" onClick={onSubmit}></i> Add Reply
+                    <div>
+                        <button onClick={onSubmit}>Add Reply</button>
                     </div>
                 </form>
             </div>
