@@ -19,7 +19,7 @@ export const setComment = (comment) => {
 
 export const postComment = (obj) => async(dispatch) => {
     const {pictureId} = obj;
-    console.log(obj)
+
     const csrfToken = Cookies.get("XSRF-TOKEN");
     const res = await fetch(`/api/pictures/photo/${pictureId}`, {
         method: "post",
@@ -54,15 +54,13 @@ export const grabComment = (id) => async (dispatch) => {
 };
 
 export const deleteComment = (id) => async(dispatch) => {
-
     const csrfToken = Cookies.get("XSRF-TOKEN");
-    const res = await fetch(`/api/pictures/photo/${id}`, {
+    const res = await fetch(`/api/pictures/comment/${id}`, {
         method: "DELETE",
         headers: {
             'Content-Type': 'application/json',
             'XSRF-TOKEN': csrfToken
         },
-        
     })
     try {
       if (res.ok) {

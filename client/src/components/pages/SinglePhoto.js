@@ -13,10 +13,12 @@ export default function SinglePhoto() {
 
     useEffect(() => {
         dispatch(getPhoto(value))
-    }, [dispatch])
+    }, [])
+
 
 
     const onSubmit = (e) => {
+        e.preventDefault()
         if(text.length > 2){
             const obj = {
                 comment: text,
@@ -26,6 +28,7 @@ export default function SinglePhoto() {
             dispatch(postComment(obj))
         }
     }
+
 
 
 
@@ -44,12 +47,12 @@ export default function SinglePhoto() {
                 <Comment/>
             </div>
             <div>
-                <form className="ui reply form">
+                <form onSubmit={onSubmit} className="ui reply form">
                     <div className="field">
                         <textarea onChange={(e) => setText(e.target.value)}></textarea>
                     </div>
                     <div>
-                        <button onClick={onSubmit}>Add Reply</button>
+                        <button type="submit">Add Reply</button>
                     </div>
                 </form>
             </div>

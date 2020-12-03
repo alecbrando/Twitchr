@@ -1,17 +1,23 @@
-import React from 'react'
+import React, {useEffect} from 'react';
 import styles from '../../scss/comment.module.scss'
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { deleteComment, grabComment } from '../../store/actions/actionComment'
+
 
 export default function CommentDetail(props) {
-    console.log(props)
     const userId = useSelector(state => state.auth.id)
+    const dispatch = useDispatch();
 
+    const onDelete = () => {
+        dispatch(deleteComment(props.id))
+        props.render()
+    }
 
-
+    console.log(props)
 
     const renderOut = () => {
         if(userId === props.userId) {
-            return <button className="ui button">Delete</button>
+            return <button className="ui button" onClick={onDelete}>Delete</button>
         }
     }
 
