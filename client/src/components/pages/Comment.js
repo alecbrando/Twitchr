@@ -21,14 +21,9 @@ export default function Comment() {
 
     const renderOut = () => {
         if(data[0]){
-       return data.map(comment => {
+       return data.map((comment, i) => {
             if (comment.pictureId === parseInt(window.location.pathname.slice(8))){
-                return <CommentDetail username={user.username} comment={comment.comment} id={comment.id} userId={user.id} render={rerender}/>
-            } else {
-                return (
-                    <>
-                    </>
-                )
+                return <CommentDetail key={i} username={user.username} comment={comment.comment} id={comment.id} userId={user.id} render={rerender}/>
             }
         })
     }

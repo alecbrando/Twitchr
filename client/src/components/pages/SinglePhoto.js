@@ -56,7 +56,7 @@ export default function SinglePhoto() {
                 <div className={styles.commentContainer}>
             </div>
             <div className={styles.middleContainer}>
-                {name}
+                {name}'s photo
             </div>
             <div className={styles.textContainer}>
                 <form onSubmit={onSubmit}   className="ui reply form">

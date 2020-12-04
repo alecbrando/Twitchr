@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { getUser } from '../../store/actions/actionPicture'
+import { allUsers} from '../../store/auth';
 import { Link } from 'react-router-dom';
 import './Profile.css';
 
@@ -13,9 +14,9 @@ export default function Profile() {
         dispatch(getUser(1))
     }, [dispatch])
 
-    // useEffect(() => {
-
-    // }, [value])
+    useEffect(() => {
+        dispatch(allUsers())
+    }, [])
 
     console.log(users)
 
@@ -41,11 +42,11 @@ export default function Profile() {
         })
     }
 
-
-   
     if(users){
         value = users[window.location.pathname.slice(9) - 1];
     }
+
+
 
     return (
         <>
