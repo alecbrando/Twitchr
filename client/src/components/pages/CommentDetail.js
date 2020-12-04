@@ -17,27 +17,22 @@ export default function CommentDetail(props) {
 
     const renderOut = () => {
         if(userId === props.userId) {
-            return <button className="ui button" onClick={onDelete}>Delete</button>
+            return <button className={styles.myButton} onClick={onDelete}>Delete</button>
         }
     }
 
     return (
         <div className={styles.container}>
             <div className="comment">
-                <a className="avatar">
-                    <i className="avatar circle icon"/>
-                </a>
                 <div className="content">
                     <a className="author">{props.username}</a>
-                    <div className="metadata">
-                        <span className="date">5 days ago</span>
-                    </div>
                     <div className="text">
                         {props.comment}
                     </div>
-                    {renderOut()}
+                    
                 </div>
             </div>
+            {renderOut()}
         </div>
     )
 }

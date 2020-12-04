@@ -6,7 +6,7 @@ export default function commentReducer(state = [], action) {
     console.log(state)
     switch (action.type) {
         case SET_COMMENT:
-            return [...state, action.comment];
+            return action.comment;
         case GET_COMMENT:
             return action.comments;
         default:

@@ -43,18 +43,21 @@ export default function SinglePhoto() {
             <div className="jumbotron">
                 <img alt="img" height="500" src={`${val}`}/>
             </div>
-            <div className={styles.commentContainer}>
-                <Comment/>
+                <div className={styles.commentContainer}>
             </div>
-            <div>
-                <form onSubmit={onSubmit} className="ui reply form">
-                    <div className="field">
-                        <textarea onChange={(e) => setText(e.target.value)}></textarea>
+            <div className={styles.middleContainer}>
+
+            </div>
+            <div className={styles.textContainer}>
+                <form onSubmit={onSubmit}  className="ui reply form">
+                    <div >
+                        <textarea className={styles.textArea} rows="4" cols="200" placeholder="Add a Comment" onChange={(e) => setText(e.target.value)}></textarea>
                     </div>
                     <div>
-                        <button type="submit">Add Reply</button>
+                        <button className={styles.myButton} type="submit">Add Reply</button>
                     </div>
                 </form>
+                <Comment/>
             </div>
         </>
     )
