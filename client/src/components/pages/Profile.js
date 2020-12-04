@@ -27,7 +27,7 @@ export default function Profile() {
                     <div key={image.id} className="one-card container">
                         <div className="ui card">
                             <div className="image">
-                                <img alt="img" src={image.urlRef} />
+                                <img alt="img" className="image-card" src={image.urlRef} />
                             </div>
                             <div className="content">
                                 <div className="description">

@@ -10,21 +10,22 @@ export default function ImageCard(props) {
     const day = date.slice(8,10);
     return (
             <span className="one-card container">
-                <div className="ui card">
-                    
-                    <div className="image">
-                        <img alt="img" className="image-card" src={props.image.urlRef}/>
-                    </div>
-                    <div className="content">
-                        <a className="header" href={`/profile/${props.image.userId}`}><i className="user icon" />{props.image.User.username}</a>
-                        <div className="meta">
-                        <span className="date">Posted on {`${month}-${day}-${year}`}</span>
+                <Link to={`/photos/${props.image.id}`}>
+                    <div className="ui card">
+                        <div className="image">
+                            <img alt="img" className="image-card" src={props.image.urlRef}/>
                         </div>
-                            <div className="description">
-                            <Link to={`/photos/${props.image.id}`}>{props.image.body}</Link>
+                        <div className="content">
+                            <a className="header" href={`/profile/${props.image.userId}`}><i className="user icon" />{props.image.User.username}</a>
+                            <div className="meta">
+                            <span className="date">Posted on {`${month}-${day}-${year}`}</span>
                             </div>
+                                <div className="description">
+                                {props.image.body}
+                                </div>
+                        </div>
                     </div>
-                </div>
+                </Link>
             </span>
     )
 }
