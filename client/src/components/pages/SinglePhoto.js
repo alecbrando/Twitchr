@@ -12,9 +12,12 @@ export default function SinglePhoto() {
 
     const dispatch = useDispatch();
     let value = window.location.pathname.slice(8);
-
     useEffect(() => {
         dispatch(getPhoto(value))
+    }, [])
+
+    useEffect(() => {
+        
     }, [comment])
 
 
@@ -30,11 +33,11 @@ export default function SinglePhoto() {
             }
             dispatch(postComment(obj))
             dispatch(grabComment(window.location.pathname.slice(8)))
+            
         }
+
         e.target.reset();
     }
-
-
 
 
     let val = ''
@@ -56,12 +59,12 @@ export default function SinglePhoto() {
                 {name}
             </div>
             <div className={styles.textContainer}>
-                <form onSubmit={onSubmit}  className="ui reply form">
+                <form onSubmit={onSubmit}   className="ui reply form">
                     <div >
                         <textarea className={styles.textArea} rows="4" cols="200" placeholder="Add a Comment" onChange={(e) => setText(e.target.value)}></textarea>
                     </div>
                     <div>
-                        <button className={styles.myButton} type="submit">Add Reply</button>
+                        <button className={styles.myButton} type="submit">Add Comment</button>
                     </div>
                 </form>
                 <Comment/>

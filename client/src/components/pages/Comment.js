@@ -5,6 +5,8 @@ import CommentDetail from './CommentDetail';
 
 export default function Comment() {
     const data = useSelector(state => state.commentReducer)
+    const user = useSelector(state => state.auth)
+    console.log(user)
     const dispatch = useDispatch();
     let value = window.location.pathname.slice(8);
 
@@ -20,9 +22,8 @@ export default function Comment() {
     const renderOut = () => {
         if(data[0]){
        return data.map(comment => {
-            console.log(comment)
             if (comment.pictureId === parseInt(window.location.pathname.slice(8))){
-                return <CommentDetail username={comment.User.username} comment={comment.comment} id={comment.id} userId={comment.userId} render={rerender}/>
+                return <CommentDetail username={user.username} comment={comment.comment} id={comment.id} userId={user.id} render={rerender}/>
             } else {
                 return (
                     <>

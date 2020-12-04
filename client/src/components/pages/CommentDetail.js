@@ -13,7 +13,6 @@ export default function CommentDetail(props) {
         props.render()
     }
 
-    console.log(props)
 
     const renderOut = () => {
         if(userId === props.userId) {

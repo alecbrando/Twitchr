@@ -9,7 +9,7 @@
 .inside-container {
     margin-top: 5vh;
     display: flex;
-    justify-content: center;
+    align-content: flex-start;
     align-content: space-between;
     flex-wrap: wrap;
     width: 60%;

@@ -6,6 +6,7 @@ import './Profile.css';
 
 export default function Profile() {
     const data = useSelector(state => state.picReducer)
+    const user = useSelector(state => state.auth)
     const dispatch = useDispatch();
 
     useEffect(() => {
@@ -17,21 +18,25 @@ export default function Profile() {
 
     const renderOut = () => {
         return data.map((image) => {
-            return (
-                <div key={image.id} className="one-card container">
-                    <div className="ui card">
+            if(image.userId === user.id){
+                return (
 
-                        <div className="image">
-                            <img alt="img" src={image.urlRef} />
-                        </div>
-                        <div className="content">
-                            <div className="description">
-                                <Link to={`/photos/${image.id}`}>{image.body}</Link>
+                    <div key={image.id} className="one-card container">
+                        <div className="ui card">
+    
+                            <div className="image">
+                                <img alt="img" src={image.urlRef} />
+                            </div>
+                            <div className="content">
+                                <div className="description">
+                                    <Link to={`/photos/${image.id}`}>{image.body}</Link>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-            )
+                )
+            }
+            
         })
     }
 
@@ -45,13 +50,16 @@ export default function Profile() {
     return (
         <>
             <div className="jumbotron">
-                <h1 className="display-4">{`Hello, ${value}`}</h1>
+                <h1 className="display-4">{`Hello, ${user.username}`}</h1>
                 <p className="lead">All your photos are diplayed below.</p>
                 <hr className="my-4" />
                 <a className="btn btn-dark" href="/photos" role="button">All Photos</a>
             </div>
-            <div className="cards">
+            <div className="card-container">
+                <div className="inside-container">
                 {renderOut()}
+                </div>
+                
             </div>
             
         </>
