@@ -6,7 +6,7 @@ import './Profile.css';
 
 export default function Profile() {
     const data = useSelector(state => state.picReducer)
-    const user = useSelector(state => state.auth)
+    const users = useSelector(state => state.auth.users)
     const dispatch = useDispatch();
 
     useEffect(() => {
@@ -18,7 +18,7 @@ export default function Profile() {
 
     const renderOut = () => {
         return data.map((image) => {
-            if(image.userId === user.id){
+            if(image.userId === image.id){
                 return (
 
                     <div key={image.id} className="one-card container">
@@ -50,7 +50,7 @@ export default function Profile() {
     return (
         <>
             <div className="jumbotron">
-                <h1 className="display-4">{`Hello, ${user.username}`}</h1>
+                <h1 className="display-4">{`Hello,`}</h1>
                 <p className="lead">All your photos are diplayed below.</p>
                 <hr className="my-4" />
                 <a className="btn btn-dark" href="/photos" role="button">All Photos</a>

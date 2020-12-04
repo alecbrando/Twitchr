@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { BrowserRouter } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import Pages from './pages/Pages';
-import { setUser } from '../store/auth';
+import { setUser,  allUsers} from '../store/auth';
 
 
 function App() {
@@ -21,6 +21,10 @@ function App() {
     }
     loadUser();
   }, [dispatch]);
+
+  useEffect(() => {
+    dispatch(allUsers())
+  }, [dispatch])
 
   if (loading) return null;
 

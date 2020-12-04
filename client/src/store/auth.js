@@ -1,5 +1,6 @@
 import Cookies from 'js-cookie';
 const SET_USER = "auth/SET_USER";
+const SET_USERS = "auth/SET_USERS";
 const CREATE_USER = "auth/CREATE_USER";
 const REMOVE_USER = "auth/REMOVE_USER";
 
@@ -9,6 +10,13 @@ export const setUser = (user) => {
         user
     }
 };
+
+export const setAllUsers = (users) => {
+    return {
+        type: SET_USERS,
+        users
+    }
+}
 
 export const removeUser = () => ({
     type: REMOVE_USER,
@@ -49,6 +57,14 @@ export const signup = (username, email, password) => async dispatch => {
         }
 }
 
+export const allUsers = () => async dispatch => {
+    const response = await fetch('api/session/users');
+    if (response.ok) {
+        const { users } = await response.json();
+        dispatch(setAllUsers(users));
+    }
+}
+
 export const login = (username, password) => {
     return async dispatch => {
         const csrfToken = Cookies.get("XSRF-TOKEN");
@@ -76,6 +92,8 @@ export default function authReducer(state = {}, action) {
             return action.user
         case REMOVE_USER:
             return {};
+        case SET_USERS:
+            return {...state, users: action.users};
         default:
             return state;
     }
