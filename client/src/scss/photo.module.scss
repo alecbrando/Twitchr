@@ -16,24 +16,19 @@ textarea {
 }
 
 .myButton {
-	box-shadow:inset 0px 1px 0px 0px #ffffff;
-	background:linear-gradient(to bottom, #ededed 5%, #dfdfdf 100%);
-	background-color:#ededed;
-	border-radius:6px;
-	border:1px solid #dcdcdc;
+	background-color:transparent;
 	display:inline-block;
 	cursor:pointer;
-	color:#777777;
+	color:#666666;
 	font-family:Arial;
 	font-size:15px;
 	font-weight:bold;
-	padding:6px 24px;
-	text-decoration:none;
-	text-shadow:0px 1px 0px #ffffff;
+	padding:7px 24px;
+    text-decoration:none;
+    border-radius: 5px;
 }
 .myButton:hover {
-	background:linear-gradient(to bottom, #dfdfdf 5%, #ededed 100%);
-	background-color:#dfdfdf;
+	background-color:transparent;
 }
 .myButton:active {
 	position:relative;
@@ -41,7 +36,16 @@ textarea {
 }
 
 .middleContainer {
-    border-bottom: 1px solid black;
+    border-bottom: 1px solid grey;
     margin-left: 20vw;
     margin-right: 20vw;
+    margin-bottom: 3vh;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    height: 180px;
 }

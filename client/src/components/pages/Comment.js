@@ -10,7 +10,7 @@ export default function Comment() {
 
     useEffect(() => {
         dispatch(grabComment(value))
-    }, [dispatch])
+    }, [])
 
     const rerender = () => {
         dispatch(grabComment(value))

@@ -22,7 +22,9 @@ export default function Photos() {
 
     return (
         <div className="card-container">
-            {renderOut()}
+            <div className="inside-container">
+                {renderOut()}   
+            </div>
         </div>
     )
 }

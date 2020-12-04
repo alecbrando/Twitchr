@@ -9,23 +9,22 @@ export default function ImageCard(props) {
     const month = date.slice(5,7);
     const day = date.slice(8,10);
     return (
-        <span className="one-card container">
-            <div className="ui card">
-                
-                <div className="image">
-                    <img alt="img" src={props.image.urlRef}/>
-                </div>
-                <div className="content">
-                    <a className="header" href={`/profile/${props.image.userId}`}><i className="user icon" />{props.image.User.username}</a>
-                    <div className="meta">
-                    <span className="date">Posted on {`${month}-${day}-${year}`}</span>
+            <span className="one-card container">
+                <div className="ui card">
+                    
+                    <div className="image">
+                        <img alt="img" className="image-card" src={props.image.urlRef}/>
                     </div>
-                        <div className="description">
-                        <Link to={`/photos/${props.image.id}`}>{props.image.body}</Link>
+                    <div className="content">
+                        <a className="header" href={`/profile/${props.image.userId}`}><i className="user icon" />{props.image.User.username}</a>
+                        <div className="meta">
+                        <span className="date">Posted on {`${month}-${day}-${year}`}</span>
                         </div>
+                            <div className="description">
+                            <Link to={`/photos/${props.image.id}`}>{props.image.body}</Link>
+                            </div>
+                    </div>
                 </div>
-            </div>
-        </span>
-        
+            </span>
     )
 }
