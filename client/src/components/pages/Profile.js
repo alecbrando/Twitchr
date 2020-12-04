@@ -8,22 +8,23 @@ export default function Profile() {
     const data = useSelector(state => state.picReducer)
     const users = useSelector(state => state.auth.users)
     const dispatch = useDispatch();
-
+    let value = ''
     useEffect(() => {
-        let value = window.location.pathname.slice(8);
         dispatch(getUser(1))
     }, [dispatch])
 
+    // useEffect(() => {
 
+    // }, [value])
+
+    console.log(users)
 
     const renderOut = () => {
         return data.map((image) => {
-            if(image.userId === image.id){
+            if(image.userId === value.id){
                 return (
-
                     <div key={image.id} className="one-card container">
                         <div className="ui card">
-    
                             <div className="image">
                                 <img alt="img" src={image.urlRef} />
                             </div>
@@ -40,17 +41,16 @@ export default function Profile() {
         })
     }
 
-    console.log(data)
 
-    let value = ''
-    if(data[0]){
-        value = data[0].User.username;
+   
+    if(users){
+        value = users[window.location.pathname.slice(9) - 1];
     }
 
     return (
         <>
             <div className="jumbotron">
-                <h1 className="display-4">{`Hello,`}</h1>
+                <h1 className="display-4">{`Hello,${value.username ? value.username : ''}`}</h1>
                 <p className="lead">All your photos are diplayed below.</p>
                 <hr className="my-4" />
                 <a className="btn btn-dark" href="/photos" role="button">All Photos</a>

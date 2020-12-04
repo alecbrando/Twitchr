@@ -43,7 +43,7 @@ export const logout = () => async dispatch => {
 
 export const signup = (username, email, password) => async dispatch => {
         const csrfToken = Cookies.get("XSRF-TOKEN");
-        const response = await fetch('api/users', {
+        const response = await fetch('/api/users', {
             method: 'post',
             headers: { 
                 'Content-Type': 'application/json',
@@ -58,7 +58,7 @@ export const signup = (username, email, password) => async dispatch => {
 }
 
 export const allUsers = () => async dispatch => {
-    const response = await fetch('api/session/users');
+    const response = await fetch('/api/session/users');
     if (response.ok) {
         const { users } = await response.json();
         dispatch(setAllUsers(users));
