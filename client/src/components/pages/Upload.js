@@ -28,7 +28,7 @@ function Upload() {
     if(userId === undefined) return <Redirect to="/"/>
 
     return (
-        <div className="adjust">
+        <div className="adjust contain">
             <div  className="ui form">
                 <div className="field">
                     <label>Title</label>
@@ -45,11 +45,10 @@ function Upload() {
                 <div className="field">
                     <label htmlFor="img">Select Image:</label>
                     <input row="2" type="file" id="img" name="img" onChange={(e) => setFilename(e.target.files[0])}></input>
-                    <button onClick={handleSubmit} className="ui primary button" type="submit">Submit</button>
+                    <button onClick={handleSubmit} className="ui primary button subButton" type="submit">Upload</button>
                 </div>
             </div>
         </div>
-        
     )
 }
 
