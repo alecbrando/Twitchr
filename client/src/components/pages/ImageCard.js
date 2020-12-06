@@ -11,15 +11,18 @@ export default function ImageCard(props) {
     return (
             <div className={styles.container}>
                     <div className="">
+                        <div className={styles.headerContainer}>
+                            <Link className={styles.textHeader} href={`/profile/${props.image.userId}`}>{props.image.User.username}</Link>
+                            <div className={styles.featuredText}>Featured</div>
+                        </div>
                         <Link className="card-link" to={`/photos/${props.image.id}`}>
                         <div className="image">
                             <img alt="img" className="image-card" src={props.image.urlRef}/>
                         </div>
                         </Link>
-                        <div className="content">
-                                <Link className="header" href={`/profile/${props.image.userId}`}><i className="user icon" />{props.image.User.username}</Link>
+                        <div className={styles.content}>
                             <div className="meta">
-                                <span className="date">Posted on {`${month}-${day}-${year}`}</span>
+                                <span className={styles.featuredText}>Posted on {`${month}-${day}-${year}`}</span>
                             </div>
                             <div className="description">
                                 {props.image.title}

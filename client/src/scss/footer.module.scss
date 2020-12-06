@@ -1,0 +1,19 @@
+.footer_Container {
+    background-color: #1C1D1E;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100px;
+    width: 100%;
+    border: 1px solid black;
+}
+
+.logos {
+    color: white;
+}
+
+.smallContainer {
+    display: flex;
+    justify-content: center;
+    width: 100px;
+}

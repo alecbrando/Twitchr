@@ -42,10 +42,12 @@ export default function SinglePhoto() {
 
     let val = ''
     let name = ''
+    let title = ''
     if(data[0]){
         console.log(data)
         val = data[0].urlRef;
         name = data[0].User.username
+        title = data[0].title
     }
 
     return (
@@ -57,6 +59,7 @@ export default function SinglePhoto() {
             </div>
             <div className={styles.middleContainer}>
                 {name}'s photo
+                <div>{title}</div>
             </div>
             <div className={styles.textContainer}>
                 <form onSubmit={onSubmit}   className="ui reply form">
