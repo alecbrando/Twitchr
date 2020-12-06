@@ -14,11 +14,8 @@ export default function SinglePhoto() {
     let value = window.location.pathname.slice(8);
     useEffect(() => {
         dispatch(getPhoto(value))
-    }, [])
-
-    useEffect(() => {
-        
     }, [comment])
+
 
 
 
@@ -58,7 +55,7 @@ export default function SinglePhoto() {
                 <div className={styles.commentContainer}>
             </div>
             <div className={styles.middleContainer}>
-                {name}'s photo
+                {name}
                 <div>{title}</div>
             </div>
             <div className={styles.textContainer}>

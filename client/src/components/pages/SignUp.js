@@ -21,11 +21,11 @@ export default function SignUp() {
     if(currentId) return <Redirect to="/"/>
 
     return (
-        <div className="adjust">
+        <div className="background">
             <div className="ui middle aligned center aligned grid">
                 <div className="column">
                     <h2 className="ui blue image header">
-                        <div className="content">Log-in to your account</div>
+                        <div className="content">Sign Up to your account</div>
                     </h2>
                     <form onSubmit={handleSubmit} className="ui large form">
                         <div className="ui stacked segment">

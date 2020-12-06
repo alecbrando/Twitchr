@@ -50,7 +50,6 @@ export const postToAws = (formData) => async(dispatch) => {
       if (res.ok) {
         const { pictures } = await res.json();
         dispatch(setImage(pictures))
-        window.location.href="/photos";
       }
       else {
         throw res;

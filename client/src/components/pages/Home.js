@@ -1,5 +1,5 @@
 import React from 'react'
-import './Splash.css'
+import styles from '../../scss/splash.module.scss'
 import { useDispatch, useSelector } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import { login } from '../../store/auth';
@@ -15,14 +15,13 @@ export default function Home() {
     if(currentId) return <Redirect to="/photos"/>
 
     return (
-        <div>
-            <div className="start">
+        <div className={styles.homeContainer}>
+            <div className={styles.start}>
                 <div>
                     <h2>“Every artist was first an amateur” Ralph Waldo Emerson</h2>
                 </div>
-                
             </div>
-            <div className="button">
+            <div className={styles.button}>
                 <div>
                     <button onClick={handleClick} className="black ui button" >Start Demo</button>
                 </div>

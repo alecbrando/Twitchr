@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
-import { Redirect } from 'react-router-dom';
+import { Redirect, useHistory } from 'react-router-dom';
 import { postToAws } from '../../store/actions/actionPicture'
 
 function Upload() {
@@ -10,11 +10,11 @@ function Upload() {
     const [tags, setTag] = useState('')
 
     const dispatch = useDispatch();
-
+    const history = useHistory()
     const userId = useSelector(state => state.auth.id)
 
     const handleSubmit = (e) => {
-        e.preventDefault();
+        // e.preventDefault();
         const formData = new FormData();
         formData.append('demo_file', filename)
         formData.append('body', body)
@@ -22,7 +22,7 @@ function Upload() {
         formData.append('userId', userId)
         formData.append('tags', tags)
         dispatch(postToAws(formData))
-        
+        history.push('/photos')
     }
 
     if(userId === undefined) return <Redirect to="/"/>

@@ -21,10 +21,10 @@ export default function Photos() {
     }
 
     return (
-        <div className="card-container">
-            <div className="inside-container">
-                {renderOut()}   
+            <div className="card-container">
+                <div className="inside-container">
+                    {renderOut()}   
+                </div>
             </div>
-        </div>
     )
 }
