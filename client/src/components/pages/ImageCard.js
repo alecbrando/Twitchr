@@ -10,9 +10,8 @@ export default function ImageCard(props) {
     const day = date.slice(8,10);
     return (
             <div className={styles.container}>
-                    <div className="">
                         <div className={styles.headerContainer}>
-                            <Link className={styles.textHeader} href={`/profile/${props.image.userId}`}>{props.image.User.username}</Link>
+                            <a className={styles.textHeader} href={`/profile/${props.image.userId}`}>{props.image.User.username}</a>
                             <div className={styles.featuredText}>Featured</div>
                         </div>
                         <Link className="card-link" to={`/photos/${props.image.id}`}>
@@ -28,7 +27,6 @@ export default function ImageCard(props) {
                                 {props.image.title}
                             </div>
                         </div>
-                    </div>
             </div>
     )
 }

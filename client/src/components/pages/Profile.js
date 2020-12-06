@@ -18,20 +18,29 @@ export default function Profile() {
         dispatch(allUsers())
     }, [])
 
-    console.log(users)
 
     const renderOut = () => {
         return data.map((image) => {
             if(image.userId === value.id){
+                const date = image.createdAt;
+                const year = date.slice(0,4);
+                const month = date.slice(5,7);
+                const day = date.slice(8,10);
+                console.log(image)
                 return (
-                    <div key={image.id} className="container">
+                    <div key={image.id}>
                         <div className="">
+                            <Link to={`/photos/${image.id}`}>
                             <div className="image">
                                 <img alt="img" className="image-card" src={image.urlRef} />
                             </div>
+                            </Link>
                             <div className="content">
                                 <div className="description">
-                                    <Link to={`/photos/${image.id}`}>{image.body}</Link>
+                                    <div>
+                                        <span className="featuredText">Posted on {`${month}-${day}-${year}`}</span>
+                                    </div>
+                                    {image.body}
                                 </div>
                             </div>
                         </div>

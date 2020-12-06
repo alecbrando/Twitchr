@@ -2,13 +2,30 @@
     text-align: center;
     background: lightslategray;
 }
-/* 
-.cards {
-    display: flex;
-    
-} */
+
 
 .cardContainer {
     display: flex;
     flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.content {
+    background-color: white;
+    height: 8vh;
+    margin-bottom: 2vh;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    padding-left: 10px;
+}
+
+.description {
+    color: black !important;
+}
+
+.featuredText {
+    color: grey;
+    font-size: 10px;
 }
