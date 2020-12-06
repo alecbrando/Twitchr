@@ -21,7 +21,7 @@ export default function Header() {
         <div className="ui inverted vertical masthead center aligned segment">
             <div className="ui container">
                 <div className="ui large secondary inverted pointing menu">
-                    <Link className='active item' to="/"><h2>Twtchr</h2></Link>
+                    <Link to="/"><h2>Twtchr</h2></Link>
                     <div className="right item">
                         {render}
                         <Logout></Logout>

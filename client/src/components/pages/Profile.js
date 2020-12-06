@@ -24,8 +24,8 @@ export default function Profile() {
         return data.map((image) => {
             if(image.userId === value.id){
                 return (
-                    <div key={image.id} className="one-card container">
-                        <div className="ui card">
+                    <div key={image.id} className="container">
+                        <div className="">
                             <div className="image">
                                 <img alt="img" className="image-card" src={image.urlRef} />
                             </div>
@@ -42,6 +42,7 @@ export default function Profile() {
         })
     }
 
+
     if(users){
         value = users[window.location.pathname.slice(9) - 1];
     }
@@ -56,11 +57,10 @@ export default function Profile() {
                 <hr className="my-4" />
                 <a className="btn btn-dark" href="/photos" role="button">All Photos</a>
             </div>
-            <div className="card-container">
+            <div className="cardContainer">
                 <div className="inside-container">
                 {renderOut()}
                 </div>
-                
             </div>
             
         </>

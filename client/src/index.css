@@ -25,3 +25,8 @@
 .card-link {
     text-decoration: none;
 }
+
+.menu {
+    display: flex !important;
+    align-items: center !important;
+}

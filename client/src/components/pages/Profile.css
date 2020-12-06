@@ -2,8 +2,13 @@
     text-align: center;
     background: lightslategray;
 }
-
+/* 
 .cards {
     display: flex;
     
+} */
+
+.cardContainer {
+    display: flex;
+    flex-direction: column;
 }
