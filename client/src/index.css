@@ -30,3 +30,13 @@
     display: flex !important;
     align-items: center !important;
 }
+
+.authorText {
+    text-decoration: none;
+    color: black;
+}
+
+.authorText:hover {
+    color: black;
+    text-decoration: none;
+}

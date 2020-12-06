@@ -20,15 +20,15 @@ export default function CommentDetail(props) {
         }
     }
 
+    console.log(props)
     return (
         <div className={styles.container}>
             <div className="comment">
-                <div className="content">
-                    <a className="author">{props.username}</a>
+                <div>
+                    <a className="authorText" href={`/profile/${props.userId}`}>{props.username}</a>
                     <div className="text">
                         {props.comment}
                     </div>
-                    
                 </div>
             </div>
             {renderOut()}

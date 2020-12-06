@@ -13,12 +13,13 @@
 
 .content {
     background-color: white;
-    height: 8vh;
+    height: 7vh;
     margin-bottom: 2vh;
     display: flex;
     justify-content: center;
     flex-direction: column;
     padding-left: 10px;
+    border-radius: 1%;
 }
 
 .description {

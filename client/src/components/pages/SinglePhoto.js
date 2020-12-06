@@ -40,11 +40,13 @@ export default function SinglePhoto() {
     let val = ''
     let name = ''
     let title = ''
+    let userId = ''
     if(data[0]){
         console.log(data)
         val = data[0].urlRef;
         name = data[0].User.username
         title = data[0].title
+        userId = data[0].userId
     }
 
     return (
@@ -55,7 +57,7 @@ export default function SinglePhoto() {
                 <div className={styles.commentContainer}>
             </div>
             <div className={styles.middleContainer}>
-                {name}
+                <a className="authorText" href={`/profile/${userId}`}>{name}</a>
                 <div>{title}</div>
             </div>
             <div className={styles.textContainer}>
