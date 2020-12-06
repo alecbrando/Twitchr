@@ -9,14 +9,18 @@
 .inside-container {
     margin-top: 5vh;
     display: flex;
-    align-content: flex-start;
+    justify-content: space-between;
     align-content: space-between;
     flex-wrap: wrap;
-    width: 60%;
+    width: 80%;
 }
 
 .image-card {
-    width: 220px !important; /* width of container */
-    height: 200px !important; /* height of container */
+    width: 365px !important; /* width of container */
+    height: 300px !important; /* height of container */
     object-fit: cover !important;
+}
+
+.card-link {
+    text-decoration: none;
 }

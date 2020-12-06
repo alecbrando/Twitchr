@@ -1,5 +1,5 @@
 import React from 'react';
-import './Cards.css';
+import styles from '../../scss/imageCard.module.scss';
 import { Link } from 'react-router-dom';
 
 export default function ImageCard(props) {
@@ -9,23 +9,23 @@ export default function ImageCard(props) {
     const month = date.slice(5,7);
     const day = date.slice(8,10);
     return (
-            <span className="one-card container">
-                <Link to={`/photos/${props.image.id}`}>
-                    <div className="ui card">
+            <div className={styles.container}>
+                    <div className="">
+                        <Link className="card-link" to={`/photos/${props.image.id}`}>
                         <div className="image">
                             <img alt="img" className="image-card" src={props.image.urlRef}/>
                         </div>
+                        </Link>
                         <div className="content">
-                            <a className="header" href={`/profile/${props.image.userId}`}><i className="user icon" />{props.image.User.username}</a>
+                                <Link className="header" href={`/profile/${props.image.userId}`}><i className="user icon" />{props.image.User.username}</Link>
                             <div className="meta">
-                            <span className="date">Posted on {`${month}-${day}-${year}`}</span>
+                                <span className="date">Posted on {`${month}-${day}-${year}`}</span>
                             </div>
-                                <div className="description">
-                                {props.image.body}
-                                </div>
+                            <div className="description">
+                                {props.image.title}
+                            </div>
                         </div>
                     </div>
-                </Link>
-            </span>
+            </div>
     )
 }
