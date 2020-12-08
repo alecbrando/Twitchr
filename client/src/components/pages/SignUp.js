@@ -25,7 +25,7 @@ export default function SignUp() {
             <div className="ui middle aligned center aligned grid">
                 <div className="column">
                     <h2 className="ui blue image header headerContainer">
-                        <div className="content">Sign Up to your account</div>
+                        <div className="content log">Sign Up to your account</div>
                     </h2>
                     <form onSubmit={handleSubmit} className="ui large form">
                         <div className="ui stacked segment">

@@ -54,3 +54,7 @@
 .headerText:hover {
     text-decoration: none;
 }
+
+.log {
+    background-color: transparent !important;
+}

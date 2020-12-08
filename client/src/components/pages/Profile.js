@@ -11,7 +11,7 @@ export default function Profile() {
     const dispatch = useDispatch();
     let value = ''
     useEffect(() => {
-        dispatch(getUser(1))
+        dispatch(getUser(window.location.pathname.slice(8)))
     }, [dispatch])
 
     useEffect(() => {
@@ -21,6 +21,7 @@ export default function Profile() {
 
     const renderOut = () => {
         return data.map((image) => {
+            console.log(data)
             if(image.userId === value.id){
                 const date = image.createdAt;
                 const year = date.slice(0,4);

@@ -3,21 +3,20 @@ import {useDispatch, useSelector} from 'react-redux'
 import { grabComment } from '../../store/actions/actionComment'
 import CommentDetail from './CommentDetail';
 
-export default function Comment() {
+export default function Comment(props) {
     const data = useSelector(state => state.commentReducer)
     const user = useSelector(state => state.auth)
-    console.log(user)
+
     const dispatch = useDispatch();
     let value = window.location.pathname.slice(8);
 
     useEffect(() => {
         dispatch(grabComment(value))
-    }, [])
+    }, [props.load])
 
     const rerender = () => {
         dispatch(grabComment(value))
     }
-
 
     const renderOut = () => {
         if(data[0]){

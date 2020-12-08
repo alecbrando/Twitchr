@@ -12,9 +12,9 @@ function Upload() {
     const dispatch = useDispatch();
     const history = useHistory()
     const userId = useSelector(state => state.auth.id)
-
+    console.log(userId)
     const handleSubmit = (e) => {
-        // e.preventDefault();
+        e.preventDefault();
         const formData = new FormData();
         formData.append('demo_file', filename)
         formData.append('body', body)

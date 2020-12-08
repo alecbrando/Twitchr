@@ -4,20 +4,21 @@ import { getPhoto} from '../../store/actions/actionPicture'
 import { postComment, grabComment } from '../../store/actions/actionComment'
 import Comment from './Comment';
 import styles from '../../scss/photo.module.scss'
+import CommentDetail from './CommentDetail';
 
 export default function SinglePhoto() {
     const [text, setText] = useState('')
+    const [load, setLoad] = useState('')
+
     const data = useSelector(state => state.picReducer)
-    const comment = useSelector(state => state.commentReducer)
+
 
     const dispatch = useDispatch();
     let value = window.location.pathname.slice(8);
+
     useEffect(() => {
         dispatch(getPhoto(value))
-    }, [comment])
-
-
-
+    },[dispatch])
 
 
     const onSubmit = (e) => {
@@ -29,10 +30,8 @@ export default function SinglePhoto() {
                 pictureId: window.location.pathname.slice(8)
             }
             dispatch(postComment(obj))
-            dispatch(grabComment(window.location.pathname.slice(8)))
-            
+            setLoad(!load)
         }
-
         e.target.reset();
     }
 
@@ -42,12 +41,12 @@ export default function SinglePhoto() {
     let title = ''
     let userId = ''
     if(data[0]){
-        console.log(data)
         val = data[0].urlRef;
         name = data[0].User.username
         title = data[0].title
         userId = data[0].userId
     }
+
 
     return (
         <>
@@ -69,7 +68,7 @@ export default function SinglePhoto() {
                         <button className={styles.myButton} type="submit">Add Comment</button>
                     </div>
                 </form>
-                <Comment/>
+                <Comment load={load}/>
             </div>
         </>
     )

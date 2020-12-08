@@ -20,7 +20,6 @@ export default function CommentDetail(props) {
         }
     }
 
-    console.log(props)
     return (
         <div className={styles.container}>
             <div className="comment">
