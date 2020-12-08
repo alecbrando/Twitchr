@@ -4,6 +4,7 @@ import { getUser } from '../../store/actions/actionPicture'
 import { allUsers} from '../../store/auth';
 import { Link } from 'react-router-dom';
 import './Profile.css';
+import Footer from './Footer';
 
 export default function Profile() {
     const data = useSelector(state => state.picReducer)
@@ -72,7 +73,7 @@ export default function Profile() {
                 {renderOut()}
                 </div>
             </div>
-            
+            <Footer/>
         </>
     )
 }

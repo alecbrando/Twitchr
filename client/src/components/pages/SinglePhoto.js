@@ -5,6 +5,7 @@ import { postComment, grabComment } from '../../store/actions/actionComment'
 import Comment from './Comment';
 import styles from '../../scss/photo.module.scss'
 import CommentDetail from './CommentDetail';
+import Footer from './Footer';
 
 export default function SinglePhoto() {
     const [text, setText] = useState('')
@@ -70,6 +71,7 @@ export default function SinglePhoto() {
                 </form>
                 <Comment load={load}/>
             </div>
+            <Footer/>
         </>
     )
 }

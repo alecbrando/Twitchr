@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Redirect, Link } from 'react-router-dom';
 import { login } from '../../store/auth';
 import './Forms.css';
-
+import Footer from './Footer';
  function LoginPage() {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
@@ -19,6 +19,7 @@ import './Forms.css';
     if(currentId) return <Redirect to="/"/>
 
     return (
+        <>
         <div className="background">
             <div className="adjust">
                 <div className="ui middle aligned center aligned grid">
@@ -53,6 +54,8 @@ import './Forms.css';
                 </div>
             </div>
         </div>  
+        <Footer/>
+        </>
     )
 }
 

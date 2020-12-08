@@ -30,6 +30,10 @@ if (process.env.NODE_ENV !== "production") {
 const persistedReducer = persistReducer(persistConfig, rootReducer)
 
 
-export default function configureStore(initialState) {
-  return createStore(persistedReducer, initialState, storeEnhancer);
-}
+const configureStore = (initialState) => {
+  let store = createStore (persistedReducer,initialState,storeEnhancer )
+  let persistor = persistStore(store)
+  return {store, persistor}
+};
+
+export default configureStore;

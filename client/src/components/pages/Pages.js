@@ -3,8 +3,9 @@ import { Route } from 'react-router-dom';
 import LoginPage from './LoginPage';
 import SignUp from './SignUp';
 import Upload from './Upload';
-import Footer from './Footer';
 import Header from './Header.js';
+
+
 import Home from './Home';
 import Photos from './Photos';
 import Profile from './Profile';
@@ -21,7 +22,6 @@ export default function Pages() {
             <Route path="/photos" exact component={Photos}></Route>
             <Route path="/profile" component={Profile}></Route>
             <Route path="/photos/:id" component={SinglePhoto}></Route>
-            <Footer/>
         </>
     )
 }

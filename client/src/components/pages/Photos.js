@@ -3,7 +3,7 @@ import ImageCard from './ImageCard';
 import { getPhotos } from '../../store/actions/actionPicture'
 import { useDispatch, useSelector } from 'react-redux';
 import './Cards.css'
-
+import Footer from './Footer';
 export default function Photos() {
     const data = useSelector(state => state.picReducer)
     const dispatch = useDispatch();
@@ -21,10 +21,13 @@ export default function Photos() {
     }
 
     return (
+        <>
             <div className="card-container">
                 <div className="inside-container">
                     {renderOut()}   
                 </div>
             </div>
+            <Footer/>
+        </>
     )
 }
