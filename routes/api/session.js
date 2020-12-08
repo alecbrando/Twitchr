@@ -48,6 +48,14 @@ router.put(
   })
 );
 
+router.get(
+  "/users",
+  asyncHandler(async (req, res) => {
+    const users = await User.findAll();
+    res.json( { users } )
+  })
+);
+
 
 router.delete('/', asyncHandler(async (req, res) => {
   console.log('inside')

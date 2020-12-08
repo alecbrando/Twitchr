@@ -53,7 +53,7 @@ router.get('/', asyncHandler(async function (req, res) {
   res.json( { pictures } )
 }))
 
-router.get('/:id', asyncHandler(async function (req, res) {
+router.get('/:id', asyncHandler(async function (req, res) { 
   const picture = await Picture.findAll({ include: [{
     model: User
   }], where: { id: req.params.id}
@@ -67,6 +67,18 @@ router.post('/photo/:id', asyncHandler(async function (req, res) {
   const comments = await Comment.create( {userId, pictureId, comment})
   res.json( { comments } )
 }))
+
+router.delete('/comment/:id', asyncHandler(async (req, res) => {
+  const id = req.params.id;
+  try{
+      await Comment.destroy({
+          where: {
+              id: id
+          }
+      });
+  } catch (e){}
+  res.send(200);
+}));
 
 
 router.get('/photo/:id', asyncHandler(async function (req, res) {
