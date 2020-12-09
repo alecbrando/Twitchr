@@ -6,6 +6,7 @@ import { postToAws } from '../../store/actions/actionPicture'
 function Upload() {
     const [title, setTitle] = useState('');
     const [body, setBody] = useState('');
+    const [refer, setRefer] = useState(false)
     const [filename, setFilename] = useState('')
     const [tags, setTag] = useState('')
 
@@ -23,11 +24,11 @@ function Upload() {
         formData.append('userId', userId)
         formData.append('tags', tags)
         dispatch(postToAws(formData, userInfo))
-        // setTimeout(history.push('/photos'), 10000)
+        setRefer(true)
     }
 
     if(userId === undefined) return <Redirect to="/"/>
-
+    if(refer) return <Redirect to="/photos"/>
     return (
         <div className="adjust contain">
             <div  className="ui form">
