@@ -37,12 +37,12 @@ router.post('/', upload.single('demo_file'), asyncHandler(async function (req, r
   console.log(req.body)
   const { title, body, tags, userId } = req.body
   const image = `https://twtchr-img.s3-us-west-2.amazonaws.com/images/${req.file.filename}`
-  const picture = await Picture.create({urlRef: image, title, body, tags, userId })
+  const picture = await Picture.create({urlRef: image, title, body, tags, userId})
 
-  const pictures = await Picture.findAll({include: [{model: User}], where :{
-    userId: userId
-  }})
-  res.json( {pictures} )
+  // const pictures = await User.findAll({include: [{model: Picture}], where :{
+  //   id: picture.id
+  // }})
+  res.json( {picture} )
 }))
 
 

@@ -2,20 +2,12 @@ import { createStore, compose, combineReducers, applyMiddleware } from "redux";
 import thunk from "redux-thunk";
 import picReducer from '../store/reducers';
 import commentReducer from '../store/reducers/commentReducer';
-import { persistStore, persistReducer } from 'redux-persist'
-import storage from 'redux-persist/lib/storage'
-
 import auth from './auth'
 const rootReducer = combineReducers({
     auth,
     picReducer,
     commentReducer
 });
-
-const persistConfig = {
-  key: 'root',
-  storage,
-}
 
 let storeEnhancer;
 
@@ -27,13 +19,6 @@ if (process.env.NODE_ENV !== "production") {
   storeEnhancer = applyMiddleware(thunk);
 }
 
-const persistedReducer = persistReducer(persistConfig, rootReducer)
-
-
-const configureStore = (initialState) => {
-  let store = createStore (persistedReducer,initialState,storeEnhancer )
-  let persistor = persistStore(store)
-  return {store, persistor}
-};
-
-export default configureStore;
+export default function configureStore(initialState) {
+  return createStore(rootReducer, initialState, storeEnhancer);
+}
