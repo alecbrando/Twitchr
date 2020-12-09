@@ -26,7 +26,7 @@ function Upload() {
         dispatch(postToAws(formData, userInfo))
         setTimeout(() => {
             setRefer(true);
-        }, 3000);
+        }, 1500);
     }
 
 
