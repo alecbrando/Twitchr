@@ -24,22 +24,11 @@ function Upload() {
         formData.append('userId', userId)
         formData.append('tags', tags)
         dispatch(postToAws(formData, userInfo))
-        let num = fibonacci(33)
-        setRefer(true)
+        setTimeout(() => {
+            setRefer(true);
+        }, 5000);
     }
-
-    function fibonacci(num){
-        var a = 1, b = 0, temp;
-      
-        while (num >= 0){
-          temp = a;
-          a = a + b;
-          b = temp;
-          num--;
-        }
-      
-        return b;
-      }
+    }
 
     if(userId === undefined) return <Redirect to="/"/>
     if(refer) return <Redirect to="/photos"/>
