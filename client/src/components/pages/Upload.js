@@ -25,7 +25,7 @@ function Upload() {
         formData.append('tags', tags)
         dispatch(postToAws(formData, userInfo))
         let count = 0
-        while(count < 10000){
+        while(count < 100000){
             count += .5
         }
         setRefer(true)
