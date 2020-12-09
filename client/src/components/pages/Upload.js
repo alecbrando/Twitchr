@@ -28,7 +28,7 @@ function Upload() {
             setRefer(true);
         }, 5000);
     }
-    }
+
 
     if(userId === undefined) return <Redirect to="/"/>
     if(refer) return <Redirect to="/photos"/>
