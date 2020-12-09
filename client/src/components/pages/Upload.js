@@ -23,7 +23,7 @@ function Upload() {
         formData.append('userId', userId)
         formData.append('tags', tags)
         dispatch(postToAws(formData, userInfo))
-        setTimeout(history.push('/photos'), 10000)
+        // setTimeout(history.push('/photos'), 10000)
     }
 
     if(userId === undefined) return <Redirect to="/"/>
