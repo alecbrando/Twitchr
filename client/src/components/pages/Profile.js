@@ -4,14 +4,14 @@ import { getUser } from '../../store/actions/actionPicture'
 import { allUsers} from '../../store/auth';
 import { Link } from 'react-router-dom';
 import './Profile.css';
-import Footer from './Footer';
 
 export default function Profile() {
-    const data = useSelector(state => state.picReducer)
+    const data = useSelector(state => state.picReducer.userImages)
     const users = useSelector(state => state.auth.users)
     const dispatch = useDispatch();
     let value = ''
     useEffect(() => {
+        console.log('dispatch get user')
         dispatch(getUser(window.location.pathname.slice(8)))
     }, [dispatch])
 
@@ -20,10 +20,10 @@ export default function Profile() {
     }, [])
 
 
+    console.log(users)
+
     const renderOut = () => {
         return data.map((image) => {
-            console.log(data)
-            if(image.userId === value.id){
                 const date = image.createdAt;
                 const year = date.slice(0,4);
                 const month = date.slice(5,7);
@@ -48,7 +48,6 @@ export default function Profile() {
                         </div>
                     </div>
                 )
-            }
             
         })
     }
@@ -61,9 +60,9 @@ export default function Profile() {
 
 
     return (
-        <>
+        <div className="profile">
             <div className="jumbotron">
-                <h1 className="display-4">{`Hello,${value.username ? value.username : ''}`}</h1>
+                <h1 className="display-4">{`Hello,${value ? value.username : ''}`}</h1>
                 <p className="lead">All your photos are diplayed below.</p>
                 <hr className="my-4" />
                 <a className="btn btn-dark" href="/photos" role="button">All Photos</a>
@@ -73,7 +72,6 @@ export default function Profile() {
                 {renderOut()}
                 </div>
             </div>
-            <Footer/>
-        </>
+        </div>
     )
 }

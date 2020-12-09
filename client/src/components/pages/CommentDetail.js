@@ -10,7 +10,6 @@ export default function CommentDetail(props) {
 
     const onDelete = () => {
         dispatch(deleteComment(props.id))
-        props.render()
     }
 
 

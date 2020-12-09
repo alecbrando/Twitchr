@@ -11,18 +11,19 @@ function Upload() {
 
     const dispatch = useDispatch();
     const history = useHistory()
-    const userId = useSelector(state => state.auth.id)
-    console.log(userId)
+    const user = useSelector(state => state.auth)
+    const userId = user.id
+    const userInfo = {userId: user.id ,username: user.username}
     const handleSubmit = (e) => {
-        e.preventDefault();
+        // e.preventDefault();
         const formData = new FormData();
         formData.append('demo_file', filename)
         formData.append('body', body)
         formData.append('title', title)
         formData.append('userId', userId)
         formData.append('tags', tags)
-        dispatch(postToAws(formData))
-        history.push('/photos')
+        dispatch(postToAws(formData, userInfo))
+        setTimeout(history.push('/photos'), 3000)
     }
 
     if(userId === undefined) return <Redirect to="/"/>

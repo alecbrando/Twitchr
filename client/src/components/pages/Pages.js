@@ -4,7 +4,7 @@ import LoginPage from './LoginPage';
 import SignUp from './SignUp';
 import Upload from './Upload';
 import Header from './Header.js';
-
+import Footer from './Footer.js';
 
 import Home from './Home';
 import Photos from './Photos';
@@ -22,6 +22,7 @@ export default function Pages() {
             <Route path="/photos" exact component={Photos}></Route>
             <Route path="/profile" component={Profile}></Route>
             <Route path="/photos/:id" component={SinglePhoto}></Route>
+            <Footer/>
         </>
     )
 }

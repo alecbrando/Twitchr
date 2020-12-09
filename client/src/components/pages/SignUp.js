@@ -3,7 +3,7 @@ import {useDispatch, useSelector } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import { signup } from '../../store/auth'
 import './Forms.css'
-import Footer from './Footer';
+
 export default function SignUp() {
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
@@ -56,7 +56,6 @@ export default function SignUp() {
                 </div>
             </div>
         </div>
-        <Footer/>
         </>
         
     )

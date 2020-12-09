@@ -1,8 +1,8 @@
 import Cookies from 'js-cookie';
 const SET_USER = "auth/SET_USER";
-const SET_USERS = "auth/SET_USERS";
 const CREATE_USER = "auth/CREATE_USER";
 const REMOVE_USER = "auth/REMOVE_USER";
+const SET_USERS = "auth/SET_USERS";
 
 export const setUser = (user) => {
     return {
@@ -41,6 +41,15 @@ export const logout = () => async dispatch => {
     }
   }
 
+
+  export const allUsers = () => async dispatch => {
+    const response = await fetch('/api/session/users');
+    if (response.ok) {
+        const { users } = await response.json();
+        dispatch(setAllUsers(users));
+    }
+}
+
 export const signup = (username, email, password) => async dispatch => {
         const csrfToken = Cookies.get("XSRF-TOKEN");
         const response = await fetch('/api/users', {
@@ -57,13 +66,6 @@ export const signup = (username, email, password) => async dispatch => {
         }
 }
 
-export const allUsers = () => async dispatch => {
-    const response = await fetch('/api/session/users');
-    if (response.ok) {
-        const { users } = await response.json();
-        dispatch(setAllUsers(users));
-    }
-}
 
 export const login = (username, password) => {
     return async dispatch => {

@@ -3,6 +3,8 @@ import styles from '../../scss/imageCard.module.scss';
 import { Link } from 'react-router-dom';
 
 export default function ImageCard(props) {
+    
+    console.log(props)
 
     const date = props.image.createdAt;
     const year = date.slice(0,4);

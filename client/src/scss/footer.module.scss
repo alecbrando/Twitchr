@@ -1,14 +1,13 @@
 .footer_Container {
     background-color: #1C1D1E;
     display: flex;
-    position:static;
+    position: relative;
     bottom: 0;
     justify-content: center;
     align-items: center;
     height: 110px;
     width: 100%;
     border: 1px solid black;
-    // margin-top: 2vh;
 }
 
 .logos {
@@ -19,4 +18,9 @@
     display: flex;
     justify-content: center;
     width: 100px;
+}
+
+.outsideContainer {
+    width: 100%;
+    height: 100%;
 }

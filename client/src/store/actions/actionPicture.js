@@ -1,15 +1,15 @@
 import Cookies from 'js-cookie';
 export const SET_IMAGE = "twtr/SET_IMAGE";
-export const LOAD_IMAGE = "twtr/SET_IMAGE";
+export const LOAD_IMAGE = "twtr/LOAD_IMAGE";
 export const SET_CURRENT = "twtr/SET_CURRENT";
 export const GET_IMAGE = "twtr/GET_IMAGE";
 
 
 
-export const setImage = (pictures) => {
+export const setImage = (picture) => {
     return {
         type: SET_IMAGE,
-        pictures
+        picture
     }
 };
 
@@ -36,7 +36,8 @@ export const setCurrent = (userPhotos) => {
     };
   };
 
-export const postToAws = (formData) => async(dispatch) => {
+export const postToAws = (formData, User) => async(dispatch) => {
+
     const csrfToken = Cookies.get("XSRF-TOKEN");
     const res = await fetch('/api/pictures', {
         method: "post",
@@ -48,8 +49,10 @@ export const postToAws = (formData) => async(dispatch) => {
 
     try {
       if (res.ok) {
-        const { pictures } = await res.json();
-        dispatch(setImage(pictures))
+        let { picture } = await res.json();
+        console.log(picture)
+        picture = {...picture, User: User}
+        dispatch(setImage(picture))
       }
       else {
         throw res;
@@ -74,6 +77,7 @@ export const getPhotos = () => async (dispatch) => {
     if (res.ok) {
       const { userPhotos } = await res.json();
       dispatch(setCurrent(userPhotos))
+      console.log(userPhotos)
       return userPhotos
     }
   };

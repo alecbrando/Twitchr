@@ -5,13 +5,12 @@ import { postComment, grabComment } from '../../store/actions/actionComment'
 import Comment from './Comment';
 import styles from '../../scss/photo.module.scss'
 import CommentDetail from './CommentDetail';
-import Footer from './Footer';
+
 
 export default function SinglePhoto() {
     const [text, setText] = useState('')
-    const [load, setLoad] = useState('')
 
-    const data = useSelector(state => state.picReducer)
+    const data = useSelector(state => state.picReducer.singleImage)
 
 
     const dispatch = useDispatch();
@@ -20,6 +19,8 @@ export default function SinglePhoto() {
     useEffect(() => {
         dispatch(getPhoto(value))
     },[dispatch])
+
+
 
 
     const onSubmit = (e) => {
@@ -31,7 +32,6 @@ export default function SinglePhoto() {
                 pictureId: window.location.pathname.slice(8)
             }
             dispatch(postComment(obj))
-            setLoad(!load)
         }
         e.target.reset();
     }
@@ -69,9 +69,8 @@ export default function SinglePhoto() {
                         <button className={styles.myButton} type="submit">Add Comment</button>
                     </div>
                 </form>
-                <Comment load={load}/>
+                <Comment/>
             </div>
-            <Footer/>
         </>
     )
 }

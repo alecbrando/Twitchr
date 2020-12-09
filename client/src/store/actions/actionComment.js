@@ -1,6 +1,7 @@
 import Cookies from 'js-cookie';
 export const SET_COMMENT = "twtr/SET_COMMENT";
 export const GET_COMMENT = "twtr/GET_COMMENT";
+export const DEL_COMMENT = "twtr/DEL_COMMENT";
 
 export const setComment = (comment) => {
     return {
@@ -13,6 +14,13 @@ export const setComment = (comment) => {
     return {
         type: GET_COMMENT,
         comments
+    }
+  };
+
+  export const delComment = (id) => {
+    return {
+        type: DEL_COMMENT,
+        id
     }
   };
 
@@ -64,6 +72,7 @@ export const deleteComment = (id) => async(dispatch) => {
     })
     try {
       if (res.ok) {
+          dispatch(delComment(id))
           console.log("success")
       }
       else {
