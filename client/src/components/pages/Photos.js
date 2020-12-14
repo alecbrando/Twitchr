@@ -10,8 +10,10 @@ export default function Photos() {
     useEffect(() => {
         dispatch(getPhotos())
     }, [dispatch])
+    console.log(data)
     const renderOut = () => {
         return data.map((image) => {
+            console.log(image)
                 return (
                     <ImageCard key={image.id} image={image}/>
                 )

@@ -11,6 +11,7 @@ export default function Profile() {
     const dispatch = useDispatch();
     let value = ''
     useEffect(() => {
+        console.log('dispatch get user')
         dispatch(getUser(window.location.pathname.slice(8)))
     }, [dispatch])
 
@@ -52,8 +53,12 @@ export default function Profile() {
 
 
     if(users){
+        // console.log(window.location.pathname.slice(9))
+        // setValue(users[1])
         Object.keys(users).map((user) => {
+            console.log(users[user])
             let id = users[user].id
+            console.log(id)
             if(id === parseInt(window.location.pathname.slice(9))){
                 value = users[user].username
             }

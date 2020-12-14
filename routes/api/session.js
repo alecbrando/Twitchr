@@ -58,6 +58,7 @@ router.get(
 
 
 router.delete('/', asyncHandler(async (req, res) => {
+  console.log('inside')
   // req.user.tokenId = null;
   // await req.user.save();
   res.clearCookie('token');
