@@ -5,6 +5,7 @@ import { postComment, grabComment } from '../../store/actions/actionComment'
 import Comment from './Comment';
 import styles from '../../scss/photo.module.scss'
 import CommentDetail from './CommentDetail';
+import Footer from './Footer.js';
 
 
 export default function SinglePhoto() {
@@ -71,6 +72,7 @@ export default function SinglePhoto() {
                 </form>
                 <Comment/>
             </div>
+            <Footer/>
         </>
     )
 }

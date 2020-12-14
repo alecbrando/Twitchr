@@ -22,7 +22,7 @@ export default function Pages() {
             <Route path="/photos" exact component={Photos}></Route>
             <Route path="/profile" component={Profile}></Route>
             <Route path="/photos/:id" component={SinglePhoto}></Route>
-            <Footer/>
+            {/* <Footer/> */}
         </>
     )
 }

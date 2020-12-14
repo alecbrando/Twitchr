@@ -4,6 +4,8 @@ import { getUser } from '../../store/actions/actionPicture'
 import { allUsers} from '../../store/auth';
 import { Link } from 'react-router-dom';
 import './Profile.css';
+import Footer from './Footer.js';
+
 
 export default function Profile() {
     const data = useSelector(state => state.picReducer.userImages)
@@ -68,6 +70,7 @@ export default function Profile() {
 
 
     return (
+        <>
         <div className="profile">
             <div className="jumbotron">
                 <h1 className="display-4">{`Hello,${value ? value : ''}`}</h1>
@@ -81,5 +84,7 @@ export default function Profile() {
                 </div>
             </div>
         </div>
+        <Footer/>
+        </>
     )
 }

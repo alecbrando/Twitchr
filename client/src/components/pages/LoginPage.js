@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Redirect, Link } from 'react-router-dom';
 import { login } from '../../store/auth';
 import './Forms.css';
+import Footer from './Footer.js';
  function LoginPage() {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
@@ -53,6 +54,7 @@ import './Forms.css';
                 </div>
             </div>
         </div>  
+        <Footer/>
         </>
     )
 }
