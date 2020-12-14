@@ -3,7 +3,7 @@
 ## My Unsplash Clone
 **Browse and upload Photos**
 
-**DB TABLE
+## DB TABLE:
 <img width="600" src="https://i.imgur.com/t9SL4M0_d.webp?maxwidth=760&fidelity=grand">
 
 
