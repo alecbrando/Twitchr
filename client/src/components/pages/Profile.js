@@ -5,6 +5,7 @@ import { allUsers} from '../../store/auth';
 import { Link } from 'react-router-dom';
 import './Profile.css';
 import Footer from './Footer.js';
+import Header from './Header.js';
 
 
 export default function Profile() {
@@ -55,8 +56,6 @@ export default function Profile() {
 
 
     if(users){
-        // console.log(window.location.pathname.slice(9))
-        // setValue(users[1])
         Object.keys(users).map((user) => {
             console.log(users[user])
             let id = users[user].id
@@ -71,6 +70,7 @@ export default function Profile() {
 
     return (
         <>
+        <Header/>
         <div className="profile">
             <div className="jumbotron">
                 <h1 className="display-4">{`Hello,${value ? value : ''}`}</h1>

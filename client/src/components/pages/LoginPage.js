@@ -4,6 +4,7 @@ import { Redirect, Link } from 'react-router-dom';
 import { login } from '../../store/auth';
 import './Forms.css';
 import Footer from './Footer.js';
+import Header from './Header.js'
  function LoginPage() {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
@@ -20,6 +21,7 @@ import Footer from './Footer.js';
 
     return (
         <>
+        <Header/>
         <div className="background">
             <div className="adjust">
                 <div className="ui middle aligned center aligned grid">

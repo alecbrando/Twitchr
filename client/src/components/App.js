@@ -5,9 +5,11 @@ import Pages from './pages/Pages';
 import { setUser } from '../store/auth';
 
 
+
 function App() {
   const [loading, setLoading] = useState(true);
   const dispatch = useDispatch();
+
   // Check to see if there is a user logged in before loading the application
   useEffect(() => {
     const loadUser = async () => {
@@ -22,7 +24,7 @@ function App() {
     loadUser();
   }, [dispatch]);
 
-
+  
   if (loading) return null;
 
   return (
