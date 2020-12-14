@@ -1,10 +1,10 @@
 # Twitchr
-*By Alec Garcia - [Visit Digitize](https://digitize-me.herokuapp.com)*
+*By Alec Garcia - [Visit Twitchr](https://twitchrr.herokuapp.com/)*
 ## My Unsplash Clone
 **Browse and upload Photos**
 
 **DB TABLE
-<img width="600" src="https://imgur.com/t9SL4M0">
+<img width="600" src="https://i.imgur.com/t9SL4M0_d.webp?maxwidth=760&fidelity=grand">
 
 
 **Table of Contents**
