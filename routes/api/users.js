@@ -28,7 +28,6 @@ router.post(
   validateSignUp,
   handleValidationErrors,
   asyncHandler(async function (req, res) {
-    console.log(req.body);
     const user = await User.signup(req.body);
 
     const token = await generateToken(user);

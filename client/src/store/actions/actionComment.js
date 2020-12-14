@@ -47,7 +47,7 @@ export const postComment = (obj) => async(dispatch) => {
         throw res;
       }
     } catch (error) {
-      console.log(error)
+      console.error(error)
     }
       
 }
@@ -73,13 +73,12 @@ export const deleteComment = (id) => async(dispatch) => {
     try {
       if (res.ok) {
           dispatch(delComment(id))
-          console.log("success")
       }
       else {
         throw res;
       }
     } catch (error) {
-      console.log(error)
+      console.error(error)
     }
       
 }

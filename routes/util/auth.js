@@ -23,7 +23,6 @@ class AuthenticationError extends Error {
 // Generates a JWT with the specified user
 function generateToken(user) {
   const data = user.toSafeObject();
-  console.log(secret);
   return jwt.sign({ data }, secret, {
     expiresIn: Number.parseInt(expiresIn)
   });

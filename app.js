@@ -91,7 +91,7 @@ app.use(function(err, _req, res, _next) {
       error: { errors: err.errors },
     });
   } else {
-    console.log(err.stack);
+    console.error(err.stack);
     res.json({
       message: err.message,
       stack: err.stack,

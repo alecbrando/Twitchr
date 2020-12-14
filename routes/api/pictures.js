@@ -32,9 +32,7 @@ const s3 = new AWS.S3();
 router.post('/', upload.single('demo_file'), asyncHandler(async function (req, res) {
   //Multer middleware adds file(in case of single file ) or files(multiple files) object to the request object.
   //req.file is the demo_file
-  console.log(req.file)
   uploadFile(req.file.path, req.file.filename ,res);
-  console.log(req.body)
   const { title, body, tags, userId } = req.body
   const image = `https://twtchr-img.s3-us-west-2.amazonaws.com/images/${req.file.filename}`
   const picture = await Picture.create({urlRef: image, title, body, tags, userId})
@@ -62,7 +60,6 @@ router.get('/:id', asyncHandler(async function (req, res) {
 }))
 
 router.post('/photo/:id', asyncHandler(async function (req, res) {
-  console.log('inside')
   const {userId, pictureId, comment} = req.body;
   const comments = await Comment.create( {userId, pictureId, comment})
   res.json( { comments } )
@@ -96,10 +93,8 @@ router.get('/get_file/:file_name',(req,res)=>{
 
 //The uploadFile function
 function uploadFile(source,targetName,res){
-    console.log('preparing to upload...');
     fs.readFile(source, function (err, filedata) {
       if (!err) {
-        // console.log(targetName, source, filedata)
         const putParams = {
             Bucket      : 'twtchr-img/images',
             Key         : targetName,
@@ -108,18 +103,17 @@ function uploadFile(source,targetName,res){
         };
         s3.putObject(putParams, function(err, data){
           if (err) {
-            console.log('Could nor upload the file. Error :',err);
+            console.error('Could nor upload the file. Error :',err);
             return;
           } 
           else{
             // fs.unlink(source);// Deleting the file from uploads folder(Optional).Do Whatever you prefer.
-            console.log('Successfully uploaded the file');
             return;
           }
         });
       }
       else{
-        console.log({'err':err});
+        console.error({'err':err});
       }
     });
   }
