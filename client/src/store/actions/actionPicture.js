@@ -50,7 +50,6 @@ export const postToAws = (formData, User) => async(dispatch) => {
     try {
       if (res.ok) {
         let { picture } = await res.json();
-        console.log(picture)
         picture = {...picture, User: User}
         dispatch(setImage(picture))
       }
@@ -58,7 +57,6 @@ export const postToAws = (formData, User) => async(dispatch) => {
         throw res;
       }
     } catch (error) {
-      console.log(error)
     }  
 }
 
@@ -77,7 +75,6 @@ export const getPhotos = () => async (dispatch) => {
     if (res.ok) {
       const { userPhotos } = await res.json();
       dispatch(setCurrent(userPhotos))
-      console.log(userPhotos)
       return userPhotos
     }
   };

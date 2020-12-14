@@ -63,6 +63,8 @@ export const signup = (username, email, password) => async dispatch => {
         if (response.ok) {
             const { user } = await response.json();
             dispatch(createUser(user));
+        } else {
+            alert('Error Try different username/password')
         }
 }
 
@@ -95,7 +97,7 @@ export default function authReducer(state = {}, action) {
         case REMOVE_USER:
             return {};
         case SET_USERS:
-            return {...state, users: action.users};
+            return {...state, users: { ...action.users }};
         default:
             return state;
     }

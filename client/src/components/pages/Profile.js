@@ -1,5 +1,5 @@
-import React, { useEffect } from 'react'
-import { useDispatch, useSelector } from 'react-redux';
+import React, { useEffect, useState } from 'react'
+import { useDispatch, useSelector} from 'react-redux';
 import { getUser } from '../../store/actions/actionPicture'
 import { allUsers} from '../../store/auth';
 import { Link } from 'react-router-dom';
@@ -20,7 +20,7 @@ export default function Profile() {
     }, [])
 
 
-    console.log(users)
+
 
     const renderOut = () => {
         return data.map((image) => {
@@ -28,7 +28,6 @@ export default function Profile() {
                 const year = date.slice(0,4);
                 const month = date.slice(5,7);
                 const day = date.slice(8,10);
-                console.log(image)
                 return (
                     <div key={image.id}>
                         <div className="">
@@ -54,7 +53,16 @@ export default function Profile() {
 
 
     if(users){
-        value = users[window.location.pathname.slice(9) - 1];
+        // console.log(window.location.pathname.slice(9))
+        // setValue(users[1])
+        Object.keys(users).map((user) => {
+            console.log(users[user])
+            let id = users[user].id
+            console.log(id)
+            if(id === parseInt(window.location.pathname.slice(9))){
+                value = users[user].username
+            }
+        })
     }
 
 
@@ -62,7 +70,7 @@ export default function Profile() {
     return (
         <div className="profile">
             <div className="jumbotron">
-                <h1 className="display-4">{`Hello,${value ? value.username : ''}`}</h1>
+                <h1 className="display-4">{`Hello,${value ? value : ''}`}</h1>
                 <p className="lead">All your photos are diplayed below.</p>
                 <hr className="my-4" />
                 <a className="btn btn-dark" href="/photos" role="button">All Photos</a>
