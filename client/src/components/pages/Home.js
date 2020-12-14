@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import { login } from '../../store/auth';
 import Footer from './Footer.js';
+import Header from './Header.js';
 export default function Home() {
 
     const dispatch = useDispatch();
@@ -16,7 +17,7 @@ export default function Home() {
 
     return (
         <>
-        <div className={styles.wholeContainer}>
+        <Header/>
         <div className={styles.homeContainer}>
             <div className={styles.start}>
                 <div>
@@ -30,7 +31,6 @@ export default function Home() {
             </div>
         </div>
         <Footer/>
-        </div>
         </>
     )
 }

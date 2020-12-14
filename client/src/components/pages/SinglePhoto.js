@@ -4,8 +4,9 @@ import { getPhoto} from '../../store/actions/actionPicture'
 import { postComment, grabComment } from '../../store/actions/actionComment'
 import Comment from './Comment';
 import styles from '../../scss/photo.module.scss'
-import CommentDetail from './CommentDetail';
 import Footer from './Footer.js';
+import Header from './Header.js';
+
 
 
 export default function SinglePhoto() {
@@ -52,6 +53,7 @@ export default function SinglePhoto() {
 
     return (
         <>
+            <Header></Header>
             <div className="jumbotron">
                 <img alt="img" height="500" src={`${val}`}/>
             </div>

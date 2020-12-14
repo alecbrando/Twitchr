@@ -31,3 +31,7 @@
     color: grey;
     font-size: 10px;
 }
+
+.profile {
+    min-height: 85vh;
+}

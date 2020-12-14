@@ -2,7 +2,8 @@ import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { Redirect, useHistory } from 'react-router-dom';
 import { postToAws } from '../../store/actions/actionPicture'
-
+import Footer from './Footer'
+import Header from './Header'
 function Upload() {
     const [title, setTitle] = useState('');
     const [body, setBody] = useState('');
@@ -11,7 +12,6 @@ function Upload() {
     const [tags, setTag] = useState('')
 
     const dispatch = useDispatch();
-    const history = useHistory()
     const user = useSelector(state => state.auth)
     const userId = user.id
     const userInfo = {userId: user.id ,username: user.username}
@@ -33,6 +33,8 @@ function Upload() {
     if(userId === undefined) return <Redirect to="/"/>
     if(refer) return <Redirect to="/photos"/>
     return (
+        <>
+        <Header/>
         <div className="adjust contain">
             <div  className="ui form">
                 <div className="field">
@@ -54,6 +56,8 @@ function Upload() {
                 </div>
             </div>
         </div>
+        <Footer/>
+        </>
     )
 }
 

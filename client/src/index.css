@@ -4,8 +4,8 @@
     justify-content: center;
     width: 100%;
     height: 100%;
-    margin-bottom: 20px;
-    min-height: 80vh;
+    /* margin-bottom: 20px; */
+    min-height: 85vh;
 }
 
 .profile {
@@ -32,6 +32,7 @@
     text-decoration: none;
 }
 
+
 .menu {
     display: flex !important;
     align-items: center !important;
@@ -50,7 +51,7 @@
 
 .contain {
     margin-top: 10vh;
-    height: 77vh;
+    min-height: 74vh;
 }
 
 .subButton {

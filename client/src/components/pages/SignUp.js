@@ -4,6 +4,7 @@ import { Redirect } from 'react-router-dom';
 import { signup } from '../../store/auth'
 import './Forms.css'
 import Footer from './Footer.js';
+import Header from './Header.js';
 
 export default function SignUp() {
     const [username, setUsername] = useState('')
@@ -23,6 +24,7 @@ export default function SignUp() {
 
     return (
         <>
+        <Header/>
         <div className="background">
             <div className="ui middle aligned center aligned grid">
                 <div className="column">
